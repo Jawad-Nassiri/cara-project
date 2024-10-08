@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/projet final de poles/public/assets/css/style.css">
+    <link rel="stylesheet" href="/projet%20final%20de%20poles/public/assets/css/style.css">
 </head>
 <body>
 
