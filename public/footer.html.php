@@ -1,6 +1,6 @@
 <footer class="section-p1">
         <div class="col">
-            <img class="logo" src="/projet%20final%20de%20poles/public/assets/images/logo.png" alt="logo">
+            <img class="logo" src="/project%20final%20de%20poles/public/assets/images/logo.png" alt="logo">
             <h4>Contact</h4>
             <p><strong>Address</strong>: 30 Bd de Sébastopol, 75004 Paris</p>
             <p><strong>Phone</strong>: +33 2222 356 /(+91) 01 2345 6789</p>
@@ -51,6 +51,6 @@
     
     
 
-    <script src="C:\xampp\htdocs\projet final de poles\public\assets\js\script.js"></script>
+    <script src="C:\xampp\htdocs\project final de poles\public\assets\js\script.js"></script>
 </body>
 </html>

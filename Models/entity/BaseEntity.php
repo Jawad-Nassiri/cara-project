@@ -4,13 +4,13 @@ namespace Models\entity;
 
 abstract class BaseEntity {
 
-    protected int $id; // Type hinting for id
+    protected int $id;
 
-    public function getId(): int { // Return type declaration
+    public function getId(): int {
         return $this->id;
     }
 
-    public function setId(int $id): void { // Type hinting for parameter
+    public function setId(int $id): void { 
         $this->id = $id;
     }
 }

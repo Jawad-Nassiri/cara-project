@@ -1,7 +1,6 @@
 <?php
 function addLink($controller, $method, $id = null)
 {
-    // return ROOT . "?controller=$controller&method=$method" . ($id ? "&id=$id" : "");
     return ROOT . "$controller/$method" . ($id ? "/$id" : "");
 }
 

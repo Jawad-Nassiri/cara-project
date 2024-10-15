@@ -15,4 +15,4 @@ ini_set('session.gc_maxlifetime', $sessionLifetime);
 require "autoload.php";
 session_start();
 include __DIR__ . "/functions.inc.php";
-define("ROOT", "/projet final de poles/");
+define("ROOT", "/project final de poles/");
