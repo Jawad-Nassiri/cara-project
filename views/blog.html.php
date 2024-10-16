@@ -1,6 +1,6 @@
 
-<section id="page-header" class="blog-header">
-        <h2>#readmore</h2>
+    <section id="page-header" class="blog-header">
+        <h2>#read-more</h2>
         <p>Read all case studies about our products!</p>
         
     </section>

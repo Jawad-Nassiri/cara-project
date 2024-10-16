@@ -16,6 +16,8 @@ class ProductController extends BaseController {
         ]);
     }
 
+    
+    //Shop Page Method
     public function shop() {
         $productRepository = new ProductRepository();
         $products = $productRepository->findAllProducts();
@@ -25,10 +27,12 @@ class ProductController extends BaseController {
         ]);
     }
 
+    //Blog Page Method
     public function blog() {
         $this->render('blog.html.php');
     }
 
+    //About Page Method
     public function about() {
         $this->render('about.html.php');
     }

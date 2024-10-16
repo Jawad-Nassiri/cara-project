@@ -1,5 +1,5 @@
 <section id="page-header">
-    <h2>#Stayhome</h2>
+    <h2>#Stay-home</h2>
     <p>Save more with coupons & up to 70% off!</p>
 </section>
 

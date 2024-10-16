@@ -1,6 +1,6 @@
 
     <section id="page-header" class="about-header">
-        <h2>#KnowUs</h2>
+        <h2>#Know-Us</h2>
         <p>Lorem ipsum dolor sit amet consectetur!</p>
         
     </section>
@@ -17,36 +17,40 @@
 
             <br><br>
             <marquee bgcolor="#ccc" loop="-1" scrollamount="5" width="100%">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis fugiat quas ab temporibus fuga perferendis at explicabo voluptatem totam sit perspiciatis vel quibusdam, nam qui quia eos voluptatum. Molestias, distinctio.</marquee>
-git add 
         </div>
     </section>
     <section id="about-app" class="section-p1">
         <h1>Download Our <a href="#">App</a></h1>
         <div class="video">
-            <video autoplay muted loop src="images/about/1.mp4"></video>
+            <video autoplay muted loop src="/project%20final%20de%20poles/public/assets/images/about/1.mp4"></video>
         </div>
     </section>
+    
     <section id="feature" class="section-p1">
-        <div class="fe-box">
-            <img src="images/features/f1.png" alt="Feature">
-            <h6>Free Shipping</h6>
-        </div>
-        <div class="fe-box">
-            <img src="images/features/f2.png" alt="Feature">
-            <h6>Online Order</h6>
-        </div><div class="fe-box">
-            <img src="images/features/f3.png" alt="Feature">
-            <h6>Save Money</h6>
-        </div><div class="fe-box">
-            <img src="images/features/f4.png" alt="Feature">
-            <h6>Promotions</h6>
-        </div><div class="fe-box">
-            <img src="images/features/f5.png" alt="Feature">
-            <h6>Happy Sell</h6>
-        </div><div class="fe-box">
-            <img src="images/features/f6.png" alt="Feature">
-            <h6>F24/7 Support</h6>
-        </div>
+    <div class="fe-box">
+        <img src="/project%20final%20de%20poles/public/assets/images/features/f1.png" alt="Feature">
+        <h6>Free Shipping</h6>
+    </div>
+    <div class="fe-box">
+        <img src="/project%20final%20de%20poles/public/assets/images/features/f2.png" alt="Feature">
+        <h6>Online Order</h6>
+    </div>
+    <div class="fe-box">
+        <img src="/project%20final%20de%20poles/public/assets/images/features/f3.png" alt="Feature">
+        <h6>Save Money</h6>
+    </div>
+    <div class="fe-box">
+        <img src="/project%20final%20de%20poles/public/assets/images/features/f4.png" alt="Feature">
+        <h6>Promotions</h6>
+    </div>
+    <div class="fe-box">
+        <img src="/project%20final%20de%20poles/public/assets/images/features/f5.png" alt="Feature">
+        <h6>Happy Sell</h6>
+    </div>
+    <div class="fe-box">
+        <img src="/project%20final%20de%20poles/public/assets/images/features/f6.png" alt="Feature">
+        <h6>24/7 Support</h6>
+    </div>
     </section>
     <section id="newsletter" class="section-p1 section-m1">
         <div class="newstext">
