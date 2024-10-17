@@ -740,7 +740,7 @@ marquee {
     cursor: pointer;
     font-size: 16px;
     font-weight: 500;
-    transition: all 0.3s linear;
+    transition: all 0.4s;
     text-decoration: none;
     display: block;
 }
@@ -777,11 +777,11 @@ marquee {
     align-items: center;
     border: 2px solid #088178;
     overflow: hidden;
-    transition: all 0.3s linear;
+    transition: all 0.3s;
 }
 
-.signup-input-field:hover {
-    border-color: #062927;
+.signup-input-field:focus-within {
+    border: 2px solid #062927;
 }
 
 .signup-input-field i {
@@ -898,6 +898,220 @@ marquee {
 }
 
 /*////////////////////////////////////////////////////*/
+
+/*Sign in form start*/
+
+
+
+
+.form-container-main {
+    width: 60%;
+    height: 500px;
+    background: #fff;
+    border-radius: 5px;
+    padding: 20px 50px;
+    color: #fff;
+    background: linear-gradient(90deg, #088178, #00c4a7);
+    margin: 100px auto;
+}
+
+.form-inner-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.left-section, .right-section {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.form-title {
+    margin-bottom: 15px;
+    font-size: 30px;
+}
+
+.left-section pre {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.button {
+    outline: none;
+    border: none;
+    background: #088178;
+    color: #fff;
+    padding: 10px 30px;
+    margin-top: 10px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.4s;
+    text-decoration: none;
+}
+
+.button:hover {
+    background: #062927;
+}
+
+.form-image {
+    width: 400px;
+    margin-top: 20px;
+}
+
+form {
+    width: 100%;
+    text-align: center;
+}
+
+.input-field {
+    height: 50px;
+    width: 100%;
+    background: #fdfdfd;
+    margin: 10px 0;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    border: 2px solid #088178;
+    overflow: hidden;
+    transition: all 0.3s linear;
+}
+
+.input-field:hover {
+    border-color: #062927;
+}
+
+.input-field i {
+    color: #444;
+    padding: 0 10px 0 20px;
+}
+
+.input-field input {
+    outline: none;
+    border: none;
+    width: 100%;
+    height: 100%;
+    color: #444;
+    font-size: 18px;
+}
+
+.left-section .social-media {
+    margin: 20px 0;
+    color: white;
+}
+
+.left-section > h2 {
+    color: #fff;
+}
+
+.social-media-platforms {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-media-platforms .social-icon {
+    margin: 0 10px;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s;
+    color: #444;
+}
+
+.social-media-platforms .social-icon:hover {
+    border: 2px solid #062927;
+    color: #062927;
+}
+
+@media (min-width: 1024px) and (max-width: 1400px){
+    .form-container-main {
+        width: 80%;
+    }
+}
+
+
+
+/*////////////////////////////////////////////////////*/
+
+/* Tablet view (768px to 1024px) */
+@media (max-width: 1024px) {
+    .form-container-main {
+        width: 80%;
+        height: auto;
+        padding: 100px;
+    }
+
+    .form-inner-container {
+        flex-direction: column;
+    }
+
+    .left-section, .right-section {
+        width: 100%;
+    }
+
+    .left-section {
+        order: 2;
+        margin-top: 30px;
+    }
+
+    .right-section {
+        order: 1;
+    }
+
+    .form-image {
+        width: 300px;
+    }
+}
+
+/* Mobile view (below 768px) */
+@media (max-width: 768px) {
+    .form-container-main {
+        width: 90%;
+        padding: 30px;
+    }
+
+    .form-inner-container {
+        flex-direction: column;
+    }
+
+    .left-section, .right-section {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .form-title {
+        font-size: 24px;
+    }
+
+    .form-image {
+        width: 200px;
+    }
+
+    .input-field input {
+        font-size: 16px;
+    }
+
+    .social-media-platforms .social-icon {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+/*////////////////////////////////////////////////////*/
+
 
 
 

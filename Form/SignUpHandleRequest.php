@@ -27,12 +27,13 @@ class SignUpHandleRequest extends BaseHandleRequest
                 $errors['password'] = "Password must be at least 6 characters.";
             }
 
+            
             if (empty($errors)) {
                 $sign_up->setUsername($_POST['username']);
                 $sign_up->setEmail($_POST['email']);
                 $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
-                $sign_up->setPassword($hashedPassword);
 
+                $sign_up->setPassword($hashedPassword);
                 return $sign_up;
             } else {
                 $this->setErrorsForm($errors);

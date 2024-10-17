@@ -17,17 +17,17 @@
             <form method="post">
                 <div class="signup-input-field">
                     <i class="fa-solid fa-user"></i>
-                    <input type="text" placeholder="Username" name="username">
+                    <input type="text" placeholder="Username" name="username" autocomplete="off">
                 </div>
 
                 <div class="signup-input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password" name="password">
+                    <input type="password" placeholder="Password" name="password" autocomplete="off">
                 </div>
 
                 <div class="signup-input-field">
                     <i class="fa-solid fa-envelope"></i>
-                    <input type="email" placeholder="Email" name="email">
+                    <input type="email" placeholder="Email" name="email" autocomplete="off">
                 </div>
 
                 <input type="submit" value="Sign Up" class="signup-btn">
