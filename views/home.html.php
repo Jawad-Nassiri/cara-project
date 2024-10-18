@@ -3,7 +3,7 @@
     <h2>Super value deals</h2>
     <h1>On all products</h1>
     <p>Save more with coupons & up to 70% off!</p>
-    <button>Shop Now</button>
+    <a href="#feature-text">Shop Now</a>
 </section>
 
 <section id="feature" class="section-p1">
@@ -34,7 +34,7 @@
 </section>
 
 <section id="product1" class="section-p1">
-    <h2>Featured Products</h2>
+    <h2 id="feature-text">Featured Products</h2>
     <p>Summer Collection New Model Design</p>
     <div class="pro-container">
         <?php if (!empty($products)): ?>
@@ -62,7 +62,7 @@
         <section id="banner" class="section-m1">
             <h4>Repair Service</h4>
             <h2>Up to <span>70% Off</span> - All t-Shirts & Accessories</h2>
-            <button class="normal">Explore More</button>
+            <a href="/project%20final%20de%20poles/product/shop"><button class="normal">Explore More</button></a>
         </section>
 
 <section id="product1" class="section-p1">

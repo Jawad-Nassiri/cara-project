@@ -1,4 +1,8 @@
 /* Global styles */
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -102,12 +106,13 @@ body {
     color: #1a1a1a;
     transition: 0.3s ease;
 }
-#navbar li a:hover,
-#navbar li a.active{
+
+#navbar li a.mouse-over:hover{
     color: #088178;
 }
-#navbar li a.active::after,
-#navbar li a:hover::after{
+
+#navbar li a:hover::after,
+#navbar li a.mouse-over.active::after{
     content: "";
     width: 30%;
     height: 2px;
@@ -116,6 +121,13 @@ body {
     bottom: -4px;
     left: 20px;
 }
+
+#navbar li a.mouse-over.active{
+    color: #088178;
+}
+
+
+/* #navbar li a.active::after, */
 #mobile{
     display: none;
     align-items: center;
@@ -159,7 +171,7 @@ body {
 #hero h1{
     color: #088178;
 }
-#hero button{
+#hero a{
     background-image: url('../images/button.png');
     background-color: transparent;
     color: #088178;
@@ -167,8 +179,8 @@ body {
     padding: 14px 80px 14px 65px;
     background-repeat: no-repeat;
     font-weight: 700;
-    cursor: pointer;
     font-size: 15px;
+    text-decoration: none;
 }
 #feature{
     display: flex;
@@ -359,7 +371,6 @@ body {
 
 #page-header{
     background-image: url('../images/banners/b1.jpg');
-    width: 100%;
     width: 100%;
     height: 30vh;
     background-size: cover;
@@ -701,6 +712,7 @@ marquee {
     color: #fff;
     background: linear-gradient(90deg, #088178, #00c4a7);
     margin: 100px auto;
+    box-shadow: 0 8px 30px rgba(8, 129, 120, 0.9);
 }
 
 .signup-form-container {
@@ -913,6 +925,8 @@ marquee {
     color: #fff;
     background: linear-gradient(90deg, #088178, #00c4a7);
     margin: 100px auto;
+    box-shadow: 0 8px 30px rgba(8, 129, 120, 0.9);
+    border: 2px solid #444;
 }
 
 .form-inner-container {
@@ -956,10 +970,6 @@ marquee {
     text-decoration: none;
 }
 
-.button:hover {
-    background: #062927;
-}
-
 .form-image {
     width: 400px;
     margin-top: 20px;
@@ -980,12 +990,13 @@ form {
     align-items: center;
     border: 2px solid #088178;
     overflow: hidden;
-    transition: all 0.3s linear;
+    transition: all 0.3s;
 }
 
-.input-field:hover {
-    border-color: #062927;
+.input-field:focus-within {
+    border: 2px solid #062927;
 }
+
 
 .input-field i {
     color: #444;
@@ -1169,3 +1180,135 @@ footer .copyright{
     text-align: center;
 }
 
+
+
+/* Basket Page Start */
+
+#basket-page-header {
+    position: relative;
+    background-image: url('/project%20final%20de%20poles/public/assets/images/banners/basket-banner.jpg');
+    background-position: center; 
+    background-position-y: -40px; 
+    width: 100%;
+    height: 30vh;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 14px;
+    overflow: hidden; 
+}
+
+#basket-page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 0; 
+}
+
+#basket-page-header * {
+    position: relative;
+    z-index: 1; 
+    color: #fff;
+}%µ
+
+#cart{
+    overflow-x: auto;
+}
+
+#cart table{
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    white-space: nowrap;
+}
+#cart table thead{
+    border: 1px solid #e2e9e1;
+    border-left: none;
+    border-right: none;
+}
+#cart table thead td{
+    padding: 18px 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+#cart table img{
+    width: 70px;;
+}
+#cart table td:nth-child(1){
+    width: 100px;
+    text-align: center;
+}
+#cart table td:nth-child(2){
+    width: 150px;
+    text-align: center;
+}
+#cart table td:nth-child(3){
+    width: 250px;
+    text-align: center;
+}
+#cart table td:nth-child(4),
+#cart table td:nth-child(5),
+#cart table td:nth-child(6){
+    width: 150px;
+    text-align: center;
+}
+#cart table td:nth-child(5) input{
+    width: 70px;
+    padding: 10px 5px 10px 15px;
+}
+#cart table tbody tr td{
+    padding-top: 15px;
+}
+#cart table tbody td{
+    font-size: 13px;
+}
+#cart-add{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+#coupon{
+    width: 50%;
+    margin-bottom: 30px;
+}
+#coupon h3,
+#subtotal h3{
+    padding-bottom: 15px;
+}
+#coupon input{
+    padding: 10px 20px;
+    outline: none;
+    width: 60%;
+    margin-right: 10px;
+    border: px solid #e2e9e1;
+}
+#coupon button,
+#subtotal button{
+    background-color: #088178;
+    color: #fff;
+    padding: 11px 20px;
+}
+#subtotal{
+    width: 50%;
+    margin-bottom: 30px;
+    border: 1px solid #e2e9e1;
+    padding: 30px;
+}
+#subtotal table{
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+}
+#subtotal table td{
+    width: 50%;
+    border: 1px solid #e2e9e1;
+    padding: 10px;
+    font-size: 13px;
+}

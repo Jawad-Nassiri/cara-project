@@ -36,5 +36,11 @@ class ProductController extends BaseController {
     public function about() {
         $this->render('about.html.php');
     }
+
+    
+    //Basket Page Method
+    public function basket() {
+        $this->render('basket.html.php');
+    }
     
 }

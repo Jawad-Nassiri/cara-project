@@ -27,7 +27,7 @@ abstract class BaseRepository {
     }
 
     public function findProductById($id) {
-        $sql = "SELECT * FROM produit WHERE id = :id";
+        $sql = "SELECT * FROM product WHERE id = :id";
         $stmt = $this->connection->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();

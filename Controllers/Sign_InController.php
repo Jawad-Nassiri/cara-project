@@ -17,7 +17,6 @@ class Sign_InController extends BaseController
 
         
         if ($this->signInRequest->handleSignInRequest()) {
-
             header("Location: /project%20final%20de%20poles/product/index");
             exit;
         }

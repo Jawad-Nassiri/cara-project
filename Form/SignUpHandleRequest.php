@@ -31,9 +31,10 @@ class SignUpHandleRequest extends BaseHandleRequest
             if (empty($errors)) {
                 $sign_up->setUsername($_POST['username']);
                 $sign_up->setEmail($_POST['email']);
-                $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                $sign_up->setPassword($_POST['password']);
 
-                $sign_up->setPassword($hashedPassword);
+                // $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                // $sign_up->setPassword($hashedPassword);
                 return $sign_up;
             } else {
                 $this->setErrorsForm($errors);

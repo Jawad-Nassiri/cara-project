@@ -36,21 +36,16 @@
             <h4>Install App</h4>
             <p>From App Store or Google Play</p>
             <div class="row">
-                <img src="/projet%20final%20de%20poles/public/assets/images/pay/app.jpg" alt="app-store">
-                <img src="/projet%20final%20de%20poles/public/assets/images/pay/play.jpg" alt="google play">
+                <img src="/project%20final%20de%20poles/public/assets/images/pay/app.jpg" alt="app-store">
+                <img src="/project%20final%20de%20poles/public/assets/images/pay/play.jpg" alt="google play">
             </div>
             <p>Secured Payment Gateways</p>
-            <img src="/projet%20final%20de%20poles/public/assets/images/pay/pay.png" alt="pay">
+            <img src="/project%20final%20de%20poles/public/assets/images/pay/pay.png" alt="pay">
         </div>
         <div class="copyright">
             <p>© 2024-2025, Jawad NASSIRI</p>
         </div>
     </footer>
 
-    
-    
-    
-
-    <script src="C:\xampp\htdocs\project final de poles\public\assets\js\script.js"></script>
 </body>
 </html>

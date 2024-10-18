@@ -26,6 +26,7 @@ class Sign_UpController extends BaseController
                 $this->saveFormData($_POST);
 
                 $_SESSION['username'] = $this->sign_up->getUsername();
+                
                 header('Location: /project%20final%20de%20poles/product/index');
                 exit();
             } else {

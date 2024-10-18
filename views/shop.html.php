@@ -6,7 +6,7 @@
 <section id="product1" class="section-p1">
     <div class="pro-container">
         <?php foreach ($products as $product): ?>
-            <div class="pro" onclick="window.location.href='sproduct.html';">
+            <div class="pro" onclick="window.location.href='details-page.html.php';">
             <img src="../public/assets/images/products/<?php echo htmlspecialchars($product->getPhoto()); ?>" alt="<?php echo htmlspecialchars($product->getTitre());?>">
                 <div class="des">
                     <span><?= htmlspecialchars($product->getMarque()) ?></span>
