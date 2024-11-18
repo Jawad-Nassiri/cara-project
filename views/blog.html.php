@@ -2,12 +2,11 @@
     <section id="page-header" class="blog-header">
         <h2>#read-more</h2>
         <p>Read all case studies about our products!</p>
-        
     </section>
     <section id="blog">
         <div class="blog-box">
             <div class="blog-img">
-                <img src="/project%20final%20de%20poles/public/assets/images/blog/b1.jpg" alt="Girl-photo">
+                <img src="/project%20final%20de%20poles/public/assets/images/blog/b1.jpg" alt="Profile view of a woman wearing a black dress">
             </div>
                 <div class="blog-details">
                     <h3>The cotton-Jersy Zip-Up Hoodie</h3>
@@ -18,7 +17,7 @@
         </div>
         <div class="blog-box">
             <div class="blog-img">
-                <img src="/project%20final%20de%20poles/public/assets/images/blog/b2.jpg" alt="Girl-photo">
+                <img src="/project%20final%20de%20poles/public/assets/images/blog/b2.jpg" alt="Profile view of tow women wearing a black and brown dress">
             </div>
                 <div class="blog-details">
                     <h3>How to Style a Quiff</h3>
@@ -29,7 +28,7 @@
         </div>
         <div class="blog-box">
             <div class="blog-img">
-                <img src="/project%20final%20de%20poles/public/assets/images/blog/b3.jpg" alt="Girl-photo">
+                <img src="/project%20final%20de%20poles/public/assets/images/blog/b3.jpg" alt="clothes">
             </div>
                 <div class="blog-details">
                     <h3>Must-Have skater Girl Item</h3>
@@ -40,7 +39,7 @@
         </div>
         <div class="blog-box">
             <div class="blog-img">
-                <img src="/project%20final%20de%20poles/public/assets/images/blog/b4.jpg" alt="Girl-photo">
+                <img src="/project%20final%20de%20poles/public/assets/images/blog/b4.jpg" alt="Profile view of tow women wearing custom">
             </div>
                 <div class="blog-details">
                     <h3>Runway-Inspired Trends</h3>
@@ -51,7 +50,7 @@
         </div>
         <div class="blog-box">
             <div class="blog-img">
-                <img src="/project%20final%20de%20poles/public/assets/images/blog/b5.jpg" alt="Girl-photo">
+                <img src="/project%20final%20de%20poles/public/assets/images/blog/b6.jpg" alt="Hands holding coffee with autumn leaves and fruits">
             </div>
                 <div class="blog-details">
                     <h3>AW20 Menswear Trends</h3>
@@ -76,4 +75,3 @@
             <button class="normal">Sign Up</button>
         </div>
     </section>
-   

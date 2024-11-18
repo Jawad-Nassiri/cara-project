@@ -703,16 +703,14 @@ marquee {
 /* Sign Up Form Start*/
 
 .signup-container {
-    border: 2px solid #444;
+    border: 1px solid #ccc;
     width: 60%;
     height: 500px;
     background: #fff;
     border-radius: 5px;
     padding: 20px 50px;
     color: #fff;
-    background: linear-gradient(90deg, #088178, #00c4a7);
     margin: 100px auto;
-    box-shadow: 0 8px 30px rgba(8, 129, 120, 0.9);
 }
 
 .signup-form-container {
@@ -741,13 +739,18 @@ marquee {
     line-height: 20px;
 }
 
+.login-btn.signup-btn {
+    position: relative;
+    top: calc(-80px);
+}
+
 .signup-btn {
     outline: none;
     border: none;
     background: #088178;
     color: #fff;
     padding: 10px 30px;
-    margin: 15px auto 0 auto;
+    margin: 30px auto 0 auto;
     border-radius: 50px;
     cursor: pointer;
     font-size: 16px;
@@ -762,8 +765,9 @@ marquee {
 }
 
 .signup-image {
-    width: 400px;
-    margin-top: 20px;
+    width: 500px;
+    position: relative;
+    top: calc(-70px);
 }
 
 .signup-right-panel {
@@ -783,7 +787,7 @@ marquee {
     height: 50px;
     width: 100%;
     background: #fdfdfd;
-    margin: 10px 0;
+    margin: 20px 0;
     border-radius: 50px;
     display: flex;
     align-items: center;
@@ -820,6 +824,8 @@ marquee {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    top: calc(-25px);
 }
 
 .signup-social-platforms .signup-social-icon {
@@ -920,13 +926,11 @@ marquee {
     width: 60%;
     height: 500px;
     background: #fff;
-    border-radius: 5px;
     padding: 20px 50px;
     color: #fff;
-    background: linear-gradient(90deg, #088178, #00c4a7);
     margin: 100px auto;
-    box-shadow: 0 8px 30px rgba(8, 129, 120, 0.9);
-    border: 2px solid #444;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .form-inner-container {
@@ -955,13 +959,18 @@ marquee {
     line-height: 20px;
 }
 
+.button.signup {
+    position: relative;
+    top: calc(-30px);
+}
+
 .button {
     outline: none;
     border: none;
     background: #088178;
     color: #fff;
     padding: 10px 30px;
-    margin-top: 10px;
+    margin-top: 20px;
     border-radius: 50px;
     cursor: pointer;
     font-size: 16px;
@@ -1132,6 +1141,7 @@ footer{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    border: 1px solid #ccc;
 }
 footer .col{
     display: flex;

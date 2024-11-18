@@ -7,7 +7,7 @@
                 If you're already a member,
                 you can sign in using the button below.
             </pre>
-            <a href="google.com" class="signup-btn">Sign In</a>
+            <a href="google.com" class="login-btn signup-btn">Sign In</a>
             <img src="/project%20final%20de%20poles/public/assets/images/forms/sign-up-form.svg" alt="welcome" class="signup-image">
         </div>
 

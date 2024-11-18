@@ -7,13 +7,12 @@ use Models\repository\ProductRepository;
 
 class ProductController extends BaseController {
     
+    //Home Page Method
     public function index() {
         $productRepository = new ProductRepository();
         $products = $productRepository->findAllProducts();
 
-        $this->render('home.html.php', [
-            'products' => $products
-        ]);
+        $this->render('home.html.php', ['products' => $products]);
     }
 
     
@@ -22,9 +21,7 @@ class ProductController extends BaseController {
         $productRepository = new ProductRepository();
         $products = $productRepository->findAllProducts();
 
-        $this->render('shop.html.php', [
-            'products' => $products
-        ]);
+        $this->render('shop.html.php', ['products' => $products]);
     }
 
     //Blog Page Method
