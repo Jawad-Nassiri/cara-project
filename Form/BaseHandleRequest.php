@@ -3,7 +3,7 @@
 namespace Form;
 
 
-class BaseHandleRequest
+abstract class BaseHandleRequest
 {
     private $errors;
 

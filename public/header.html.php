@@ -35,11 +35,11 @@
                 <li><a class="mouse-over" href="/project%20final%20de%20poles/product/blog">Blog</a></li>
                 <li><a class="mouse-over" href="/project%20final%20de%20poles/product/about">About</a></li>
                 <li><a class="mouse-over" href="/project%20final%20de%20poles/contact/submitContactForm">Contact</a></li>
-                <li><a class="mouse-over" href="/project%20final%20de%20poles/Sign_In/signIn">Sign In</a></li>
                 <?php if (isset($_SESSION['username'])): ?>
-                <li><a class="mouse-over" href="/project%20final%20de%20poles/logout.php" class="logout">Logout</a></li>
-                <?php else: ?>
-                <li><a class="mouse-over" href="/project%20final%20de%20poles/Sign_Up/submitSign_UpForm" class="login">Sign Up</a></li>
+                    <li><a class="mouse-over" href="/project%20final%20de%20poles/sign_In/logout" class="logout">Logout</a></li>
+                    <?php else: ?>
+                    <li><a class="mouse-over" href="/project%20final%20de%20poles/Sign_In/signIn">Sign In</a></li>
+                    <li><a class="mouse-over" href="/project%20final%20de%20poles/Sign_Up/submitSign_UpForm" class="login">Sign Up</a></li>
                 <?php endif; ?>
                 <li id="lg-bag"><a class="mouse-over" href="/project%20final%20de%20poles/Product/basket"><i class="fa-solid fa-bag-shopping"></i></a></li>
                 <a href="#" id="close"><i class="fa-solid fa-xmark" id="xmark"></i></a>

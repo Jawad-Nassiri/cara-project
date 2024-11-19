@@ -12,9 +12,9 @@ class Sign_UpRepository extends BaseRepository
             $sql = "INSERT INTO member (username, email, password) VALUES (:username, :email, :password)";
             $stmt = $this->connection->prepare($sql);
 
-            $stmt->bindParam(':username', $data['username']);
-            $stmt->bindParam(':email', $data['email']);
-            $stmt->bindParam(':password', $data['password']);
+            $stmt->bindParam(':username', $data->getUsername());
+            $stmt->bindParam(':email', $data->getEmail());
+            $stmt->bindParam(':password', $data->getPassword());
 
             return $stmt->execute();
 

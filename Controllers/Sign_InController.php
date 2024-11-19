@@ -25,6 +25,16 @@ class Sign_InController extends BaseController
         return $this->renderSignInForm($errors);
     }
 
+    public function logout()
+    {
+        session_start();
+        session_unset();
+        session_destroy();
+
+        header('Location: /project%20final%20de%20poles/product/index');
+        exit();
+    }
+
     private function renderSignInForm($errors = [])
     {
         $this->render('sign-in-form.html.php', ['errors' => $errors]);

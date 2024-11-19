@@ -2,12 +2,14 @@
 
 
 
+
 namespace Controllers;
 
 use Controllers\BaseController;
 use Form\SignUpHandleRequest;
 use Models\entity\Sign_Up;
 use Models\repository\Sign_UpRepository;
+
 
 class Sign_UpController extends BaseController
 {
@@ -23,7 +25,7 @@ class Sign_UpController extends BaseController
 
         if ($formHandler->isSubmitted()) {
             if ($formHandler->isValid()) {
-                $this->saveFormData($_POST);
+                $this->saveFormData($this->sign_up);
 
                 $_SESSION['username'] = $this->sign_up->getUsername();
                 
@@ -40,7 +42,7 @@ class Sign_UpController extends BaseController
         return $this->render('sign-up-form.html.php');
     }
 
-    private function saveFormData($formData)
+    private function saveFormData(Sign_Up $formData)
     {
         $Sign_UpRepo = new Sign_UpRepository();
 
@@ -51,10 +53,6 @@ class Sign_UpController extends BaseController
         }
     }
 }
-
-
-
-
 
 
 
