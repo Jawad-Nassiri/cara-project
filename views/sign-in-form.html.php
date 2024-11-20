@@ -10,11 +10,19 @@
                         <i class="fa-solid fa-user"></i>
                         <input type="text" placeholder="Username" name="username" required>
                     </div>
+
+                    <?php if (isset($errors['username'])): ?>
+                        <p class="sign-in-error"><?= htmlspecialchars($errors['username']) ?></p>
+                    <?php endif; ?>
         
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
                         <input type="password" placeholder="Password" name="password" required>
                     </div>
+
+                    <?php if (isset($errors['password'])): ?>
+                        <p class="sign-in-error"><?= htmlspecialchars($errors['password']) ?></p>
+                    <?php endif; ?>
 
                     <input type="submit" value="Sign In" class="button">
 

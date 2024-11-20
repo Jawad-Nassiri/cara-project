@@ -15,11 +15,24 @@ class Sign_InController extends BaseController
         $repository = new Sign_InRepository();
         $this->signInRequest = new SignInHandleRequest($repository);
 
-        
-        if ($this->signInRequest->handleSignInRequest()) {
-            header("Location: /project%20final%20de%20poles/product/index");
+
+        $user = $this->signInRequest->handleSignInRequest();
+
+        if($user){
+
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['statut_admin'] = $user['statut_admin'];
+            // header("Location: /project%20final%20de%20poles/product/index");
+
+            if ($_SESSION['statut_admin'] == 1) {
+                header("Location: /project%20final%20de%20poles/product/index");
+            } else {
+                header("Location: /project%20final%20de%20poles/product/index");
+            }
+
             exit;
         }
+        
 
         $errors = $this->signInRequest->getErrorsForm();
         return $this->renderSignInForm($errors);

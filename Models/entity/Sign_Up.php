@@ -4,9 +4,12 @@
 namespace Models\entity;
 
 class Sign_Up extends BaseEntity {
+
     private $username;
     private $email;
     private $password;
+
+    private $staut_admin;
 
     public function getUsername() {
         return $this->username;
@@ -36,5 +39,13 @@ class Sign_Up extends BaseEntity {
         $this->password = $password;
 
         return $this;
+    }
+
+    public function getAdminStatus(){
+        return $this->staut_admin;
+    }
+
+    public function setAdminStatus($staut_admin){
+        $this->staut_admin = $staut_admin;
     }
 }

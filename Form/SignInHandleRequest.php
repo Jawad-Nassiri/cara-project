@@ -33,7 +33,7 @@ class SignInHandleRequest extends BaseHandleRequest {
 
                 if ($user) {
                     if (password_verify($password, $user['password'])) {
-                        return true;
+                        return $user;
                     } else {
                         $errors['password'] = "Incorrect password.";
                     }
