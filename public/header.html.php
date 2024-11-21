@@ -17,6 +17,8 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="http://localhost/project%20final%20de%20poles/public/assets/css/style.css">
+    <!-- <link rel="stylesheet" href="/project%20final%20de%20poles/public/assets/css/style.css"> -->
+
 
     <!-- Custom JS -->
     <script src="http://localhost/project%20final%20de%20poles/public/assets/js/script.js" defer ></script>
@@ -50,7 +52,7 @@
 
 
                 <?php if (isset($_SESSION['statut_admin']) && $_SESSION['statut_admin'] == 1): ?>
-                    <li><a class="mouse-over" href="/project%20final%20de%20poles/Sign_In/signIn">Admin Dashboard</a></li>
+                    <li><a class="mouse-over" href="/project%20final%20de%20poles/AdminProduct/showAddProductForm">Admin Dashboard</a></li>
                 <?php endif; ?>
 
 

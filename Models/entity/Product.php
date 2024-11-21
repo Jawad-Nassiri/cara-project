@@ -12,13 +12,13 @@ class Product extends BaseEntity {
     private float $prix;
     private int $stock;
 
-    public function getId(): int {
-        return $this->id;
-    }
+    // public function getId(): int {
+    //     return $this->id;
+    // }
 
-    public function setId(int $id): void {
-        $this->id = $id;
-    }
+    // public function setId(int $id): void {
+    //     $this->id = $id;
+    // }
 
     public function getTitre(): string {
         return $this->titre;
