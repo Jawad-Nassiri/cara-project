@@ -12,14 +12,6 @@ class Product extends BaseEntity {
     private float $prix;
     private int $stock;
 
-    // public function getId(): int {
-    //     return $this->id;
-    // }
-
-    // public function setId(int $id): void {
-    //     $this->id = $id;
-    // }
-
     public function getTitre(): string {
         return $this->titre;
     }
@@ -73,6 +65,9 @@ class Product extends BaseEntity {
     }
 
     public function setPrix(float $prix): void {
+        if ($prix < 0) {
+            throw new \InvalidArgumentException("Price cannot be negative.");
+        }
         $this->prix = $prix;
     }
 

@@ -6,7 +6,7 @@ use Models\entity\Product;
 use Models\repository\AdminRepository;
 use Form\ProductHandleRequest;
 
-class AdminProductController extends BaseController
+class AdminAddProductController extends BaseController
 {
     private $adminRepo;
 
@@ -14,22 +14,23 @@ class AdminProductController extends BaseController
     {
         $this->adminRepo = new AdminRepository();
     }
-
     public function showAddProductForm()
     {
         $this->checkAdminAccess();
-        $this->render('admin-add-product.html.php');
-
+        $products = $this->showAllProducts();
+        return $this->render('admin-add-product.html.php', [
+            'products' => $products,
+        ]);
     }
 
     public function addProduct()
     {
-
         $this->checkAdminAccess();
-        
+
         if (isset($_POST['submit'])) {
             $product = new Product();
             $handler = new ProductHandleRequest();
+
             $product = $handler->handleProductRequest($product);
 
             if ($product && $handler->isValid()) {
@@ -52,6 +53,8 @@ class AdminProductController extends BaseController
                     } else {
                         $handler->setErrorsForm(['photo' => 'Invalid file type. Only jpg, jpeg, png, and gif are allowed.']);
                     }
+                } else {
+                    $handler->setErrorsForm(['photo' => 'Photo is required.']);
                 }
 
                 if ($handler->isValid()) {
@@ -67,7 +70,7 @@ class AdminProductController extends BaseController
                     );
 
                     if ($isProductAdded) {
-                        header("Location: /project%20final%20de%20poles/product/index");
+                        header("Location: /project%20final%20de%20poles/");
                         exit();
                     } else {
                         $handler->setErrorsForm(['general' => 'There was an error adding the product.']);
@@ -77,14 +80,25 @@ class AdminProductController extends BaseController
 
             $this->render('admin-add-product.html.php', ['errors' => $handler->getErrorsForm()]);
         }
-
-        
     }
 
-    private function checkAdminAccess() {
+    private function checkAdminAccess()
+    {
         if (!isset($_SESSION['statut_admin']) || $_SESSION['statut_admin'] !== 1) {
             header("Location: /project%20final%20de%20poles/product/index");
             exit();
         }
     }
+
+
+    public function showAllProducts(){
+        $this->checkAdminAccess();
+
+        $products = $this->adminRepo->getAllProductsForAdmin();
+
+        return $products;
+    }
+
 }
+
+

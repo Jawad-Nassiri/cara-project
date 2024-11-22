@@ -24,6 +24,7 @@ class ProductHandleRequest extends BaseHandleRequest {
                 $this->setErrorsForm($errors);
             }
         }
+        return null;
     }
 
     private function validateForm() {
@@ -45,6 +46,11 @@ class ProductHandleRequest extends BaseHandleRequest {
             $errors['description'] = "Description is required.";
         }
 
+        
+        if (!isset($_FILES['photo']) || $_FILES['photo']['error'] !== 0) {
+            $errors['photo'] = "Photo is required.";
+        }
+
         if (empty($_POST['prix'])) {
             $errors['prix'] = "Price is required.";
         }
@@ -56,4 +62,3 @@ class ProductHandleRequest extends BaseHandleRequest {
         return $errors;
     }
 }
-

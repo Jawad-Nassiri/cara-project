@@ -52,7 +52,7 @@
 
 
                 <?php if (isset($_SESSION['statut_admin']) && $_SESSION['statut_admin'] == 1): ?>
-                    <li><a class="mouse-over" href="/project%20final%20de%20poles/AdminProduct/showAddProductForm">Admin Dashboard</a></li>
+                    <li><a class="mouse-over" href="/project%20final%20de%20poles/AdminAddProduct/showAddProductForm">Admin Dashboard</a></li>
                 <?php endif; ?>
 
 

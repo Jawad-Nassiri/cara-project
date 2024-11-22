@@ -1,4 +1,4 @@
-<form method="post" enctype="multipart/form-data" class="product-form">
+<form method="post" action="<?= addLink('AdminAddProduct','addProduct') ?>" enctype="multipart/form-data" class="product-form">
         <div class="form-group">
             <label for="categorie" class="form-label">Category:</label>
             <input type="text" id="categorie" name="categorie" class="form-input" required>
@@ -44,5 +44,39 @@
         </div>
     
         <button type="submit" class="form-submit" name="submit">Add Product</button>
+
+        <h1>All Products</h1>
+        <?php if (isset($products) && count($products) > 0): ?>
+            <table>
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Brand</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($products as $product): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($product->getTitre()); ?></td>
+                        <td><?php echo htmlspecialchars($product->getCategorie()); ?></td>
+                        <td><?php echo htmlspecialchars($product->getMarque()); ?></td>
+                        <td><?php echo number_format($product->getPrix(), 2); ?> €</td>
+                        <td><?php echo $product->getStock(); ?></td>
+                        <td>
+                            <a href="/product/edit/<?php echo $product->getId(); ?>">Edit</a> |
+                            <a href="/product/delete/<?php echo $product->getId(); ?>">Delete</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+            </table>
+        <?php else: ?>
+            <p>No products available.</p>
+        <?php endif; ?>
+    
     </form>
     

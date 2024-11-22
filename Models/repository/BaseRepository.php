@@ -15,7 +15,7 @@ abstract class BaseRepository {
         $this->connection = $this->db->dbConnect();
     }
 
-    // Find all products (generic method)
+    // Find all products 
     public function findAll($tableName) {
 
         $sql = "SELECT * FROM $tableName";
@@ -56,7 +56,6 @@ abstract class BaseRepository {
         if ($stmt->execute()) {
             return true;
         }else{
-
             return false;
         }
     }
@@ -72,4 +71,3 @@ abstract class BaseRepository {
         return false;
     }
 }
-
