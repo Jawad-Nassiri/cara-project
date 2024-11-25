@@ -42,7 +42,7 @@
             <?php for ($i = 0; $i < min(8, $productCount); $i++): ?>
                 <?php $product = $products[$i]; ?>
                 <div class="pro">
-                    <img src="public/assets/images/products/<?php echo htmlspecialchars($product->getPhoto()); ?>" alt="<?php echo htmlspecialchars($product->getTitre());?>">
+                    <img src="/project%20final%20de%20poles/public/assets/images/products/<?php echo htmlspecialchars($product->getPhoto()); ?>" alt="<?php echo htmlspecialchars($product->getTitre());?>">
                     <div class="des">
                         <span><?php echo htmlspecialchars($product->getMarque()); ?></span>
                         <h5><?php echo htmlspecialchars($product->getTitre()); ?></h5> 
@@ -71,7 +71,7 @@
             <?php for ($i = 8; $i < min(16, $productCount); $i++): ?>
                 <?php $product = $products[$i]; ?>
                 <div class="pro">
-                    <img src="public/assets/images/products/<?php echo htmlspecialchars($product->getPhoto()); ?>" alt="<?php echo htmlspecialchars($product->getTitre());?>">
+                    <img src="/project%20final%20de%20poles/public/assets/images/products/<?php echo htmlspecialchars($product->getPhoto()); ?>" alt="<?php echo htmlspecialchars($product->getTitre());?>">
                     <div class="des">
                         <span><?php echo htmlspecialchars($product->getMarque()); ?></span>
                         <h5><?php echo htmlspecialchars($product->getTitre()); ?></h5> 

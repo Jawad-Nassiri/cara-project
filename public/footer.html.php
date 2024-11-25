@@ -46,6 +46,8 @@
             <p>© 2024-2025, Jawad NASSIRI</p>
         </div>
     </footer>
-
+    
+    <!-- Custom JS -->
+    <script src="/project%20final%20de%20poles/public/assets/js/script.js"></script>
 </body>
 </html>

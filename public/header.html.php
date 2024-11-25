@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>E-commerce Website</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/logo.png">
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
@@ -16,12 +13,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="http://localhost/project%20final%20de%20poles/public/assets/css/style.css">
-    <!-- <link rel="stylesheet" href="/project%20final%20de%20poles/public/assets/css/style.css"> -->
-
-
-    <!-- Custom JS -->
-    <script src="http://localhost/project%20final%20de%20poles/public/assets/js/script.js" defer ></script>
+    <!-- <link rel="stylesheet" href="http://localhost/project%20final%20de%20poles/public/assets/css/style.css"> -->
+    <link rel="stylesheet" href="/project%20final%20de%20poles/public/assets/css/style.css">
 
 </head>
 <body>
@@ -32,7 +25,7 @@
         <a href="http://localhost/project%20final%20de%20poles"><img src="/project%20final%20de%20poles/public/assets/images/logo.png" class="logo" alt="Logo"></a>
         <div>
             <ul id="navbar">
-                <li><a class="mouse-over active" href="http://localhost/project%20final%20de%20poles">Home</a></li>
+                <li><a class="mouse-over" href="http://localhost/project%20final%20de%20poles/product/index">Home</a></li>
 
                 <li><a class="mouse-over" href="/project%20final%20de%20poles/product/shop">Shop</a></li>
 

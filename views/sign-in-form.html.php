@@ -47,7 +47,8 @@ you can sign up using the button below.
 
                 <a href="google.com" class="button signup">Sign Up</a>
 
-                <img src="/project%20final%20de%20poles/public/assets/images/forms/sign-in-form.svg" alt="welcome" class="form-image">
+                <img src="
+                forms/sign-in-form.svg" alt="welcome" class="form-image">
             </div>
         
         </div>
