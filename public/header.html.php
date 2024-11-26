@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <!-- Custom CSS -->
-    <!-- <link rel="stylesheet" href="http://localhost/project%20final%20de%20poles/public/assets/css/style.css"> -->
-    <link rel="stylesheet" href="/project%20final%20de%20poles/public/assets/css/style.css">
+    <link rel="stylesheet" href="http://localhost/project%20final%20de%20poles/public/assets/css/style.css">
+    <!-- <link rel="stylesheet" href="/project%20final%20de%20poles/public/assets/css/style.css"> -->
 
 </head>
 <body>
@@ -34,6 +34,11 @@
                 <li><a class="mouse-over" href="/project%20final%20de%20poles/product/about">About</a></li>
 
                 <li><a class="mouse-over" href="/project%20final%20de%20poles/contact/submitContactForm">Contact</a></li>
+                
+
+                <?php if (isset($_SESSION['statut_admin']) && $_SESSION['statut_admin'] == 1): ?>
+                    <li><a class="mouse-over" href="/project%20final%20de%20poles/AdminAddProduct/showAddProductForm">Admin Dashboard</a></li>
+                <?php endif; ?>
 
 
                 <?php if (isset($_SESSION['username'])): ?>
@@ -41,11 +46,6 @@
                 <?php else: ?>
                     <li><a class="mouse-over" href="/project%20final%20de%20poles/Sign_In/signIn">Sign In</a></li>
                     <li><a class="mouse-over" href="/project%20final%20de%20poles/Sign_Up/sign_UpForm" class="login">Sign Up</a></li>
-                <?php endif; ?>
-
-
-                <?php if (isset($_SESSION['statut_admin']) && $_SESSION['statut_admin'] == 1): ?>
-                    <li><a class="mouse-over" href="/project%20final%20de%20poles/AdminAddProduct/showAddProductForm">Admin Dashboard</a></li>
                 <?php endif; ?>
 
 

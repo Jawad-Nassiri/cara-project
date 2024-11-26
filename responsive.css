@@ -1,0 +1,116 @@
+
+/* Mobile view (below 768px) */
+
+@media (max-width: 768px) {
+
+
+    /*Blog Page*/
+
+    #blog {
+        padding: 100px 20px 0 20px;
+    }
+
+    #blog .blog-box {
+        flex-direction: column;
+    }
+
+    #blog .blog-img {
+        width: 100%;
+        margin-right: 0px;
+    }
+
+    #blog .blog-details {
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    #blog p {
+        text-align: justify;
+    }
+
+    /* About Page  */
+
+    #about-head {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    #about-head img {
+        width: 100%;
+    }
+
+    #about-head div {
+        padding-left: 0;
+    }
+
+    #about-app .video {
+        width: 100%;
+    }
+
+
+    /* Sign in Form  */
+    .form-container-main {
+        width: 90%;
+        padding: 30px;
+    }
+
+    .form-inner-container {
+        flex-direction: column;
+    }
+
+    .left-section, .right-section {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .form-title {
+        font-size: 24px;
+    }
+
+    .form-image {
+        width: 200px;
+    }
+
+    .input-field input {
+        font-size: 16px;
+    }
+
+    .social-media-platforms .social-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+
+    /* Sign up Form  */
+
+    .signup-container {
+        width: 90%;
+        padding: 30px;
+    }
+
+    .signup-form-container {
+        flex-direction: column;
+    }
+
+    .signup-left-panel, .signup-right-panel {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .signup-title {
+        font-size: 24px;
+    }
+
+    .signup-image {
+        width: 200px;
+    }
+
+    .signup-input-field input {
+        font-size: 16px;
+    }
+
+    .signup-social-platforms .signup-social-icon {
+        width: 40px;
+        height: 40px;
+    }
+}

@@ -45,49 +45,53 @@
 
     <button type="submit" class="form-submit" name="submit">Add Product</button>
 
-    <h1 class="all-product">All Products</h1>
-    <?php if (isset($products) && count($products) > 0): ?>
-        <div class="table-wrapper">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Category</th>
-                        <th>Brand</th>
-                        <th>Price</th>
-                        <th>Stock</th>
-                        <th>Image</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($products as $product): ?>
-                        <tr>
-                            <td><?php echo htmlspecialchars($product->getTitre()); ?></td>
-                            <td><?php echo htmlspecialchars($product->getCategorie()); ?></td>
-                            <td><?php echo htmlspecialchars($product->getMarque()); ?></td>
-                            <td><?php echo number_format($product->getPrix(), 2); ?> €</td>
-                            <td><?php echo $product->getStock(); ?></td>
-                            <td>
-                                <?php if ($product->getPhoto()): ?>
-                                    <img src="/project%20final%20de%20poles/public/assets/images/products/<?php echo htmlspecialchars($product->getPhoto()); ?>" alt="Product Image" width="50" height="50">
-                                <?php else: ?>
-                                    No Image
-                                <?php endif; ?>
-                            </td>
-                            <td>
-                                <a class="edit-btn" href="/product/edit/<?php echo $product->getId(); ?>">Edit</a> |
-                                <a class="delete-btn" href="/product/delete/<?php echo $product->getId(); ?>">Delete</a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-    <?php else: ?>
-        <p>No products available.</p>
-    <?php endif; ?>
-
 </form>
+
+<?php if (isset($products) && count($products) > 0): ?>
+    <div class="table-wrapper admin-product-table">
+        <h1 class="all-product">All Products</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Brand</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($products as $product): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($product->getTitre()); ?></td>
+                        <td><?php echo htmlspecialchars($product->getCategorie()); ?></td>
+                        <td><?php echo htmlspecialchars($product->getMarque()); ?></td>
+                        <td><?php echo number_format($product->getPrix(), 2); ?> €</td>
+                        <td><?php echo $product->getStock(); ?></td>
+                        <td>
+                            <?php if ($product->getPhoto()): ?>
+                                <img src="/project%20final%20de%20poles/public/assets/images/products/<?php echo htmlspecialchars($product->getPhoto()); ?>" alt="Product Image" width="50" height="50">
+                            <?php else: ?>
+                                No Image
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <form method="POST" action="/product/edit/<?php echo $product->getId(); ?>" style="display: inline;">
+                                <button type="submit" class="edit-btn">Edit</button>
+                            </form>
+                            <form method="POST" action="/product/delete/<?php echo $product->getId(); ?>" style="display: inline;">
+                                <button type="submit" class="delete-btn">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+<?php else: ?>
+    <p>No products available.</p>
+<?php endif; ?>
 
     

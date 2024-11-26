@@ -39,7 +39,7 @@ class ContactController extends BaseController
         $contactRepo = new ContactRepository();
 
         if ($contactRepo->saveContactForm($formData)) {
-            echo 'Your message has been sent successfully!';
+            header('Location: /project%20final%20de%20poles/product/index');
         } else {
             echo 'There was an error sending your message. Please try again.';
         }

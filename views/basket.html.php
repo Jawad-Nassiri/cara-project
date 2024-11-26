@@ -11,14 +11,14 @@
                     <td>Image</td>
                     <td>Product</td>
                     <td>Price</td>
-                    <td>Quality</td>
+                    <td>Quantity</td>
                     <td>Subtotal</td>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td><a href="#"><i class="far fa-times-circle"></i></a></td>
-                    <td><img src="images/products/f1.jpg" alt=""></td>
+                    <td><img src="/project%20final%20de%20poles/public/assets/images/products/f1.jpg" alt=""></td>
                     <td>Lorem ipsum dolor sit.</td>
                     <td>118€</td>
                     <td><input type="number" value="1"></td>
@@ -27,16 +27,7 @@
 
                 <tr>
                     <td><a href="#"><i class="far fa-times-circle"></i></a></td>
-                    <td><img src="images/products/f2.jpg" alt=""></td>
-                    <td>Lorem ipsum dolor sit.</td>
-                    <td>118€</td>
-                    <td><input type="number" value="1"></td>
-                    <td>118€</td>
-                </tr>
-
-                <tr>
-                    <td><a href="#"><i class="far fa-times-circle"></i></a></td>
-                    <td><img src="images/products/f3.jpg" alt=""></td>
+                    <td><img src="/project%20final%20de%20poles/public/assets/images/products/f2.jpg" alt=""></td>
                     <td>Lorem ipsum dolor sit.</td>
                     <td>118€</td>
                     <td><input type="number" value="1"></td>
@@ -48,30 +39,14 @@
 
 
     <section id="cart-add" class="section-p1">
-        <div id="coupon">
-            <h3>Apply coupon</h3>
-            <div>
-                <input type="text" placeholder="Enter your coupon">
-                <button class="normal">Apply</button>
-            </div>
-        </div>
-    
         <div id="subtotal">
             <h3>Cart Total</h3>
             <table>
-                <tr>
-                    <td>Cart subtotal</td>
-                    <td>335€</td>
-                </tr>
-                <tr>
-                    <td>Shipping</td>
-                    <td>Free</td>
-                </tr>
                 <tr>
                     <td><strong>Total</strong></td>
                     <td><strong>335€</strong></td>
                 </tr>
             </table>
-            <button class="normal">ipsum dolors</button>
+            <a href="#">Continue</a>
         </div>
     </section>

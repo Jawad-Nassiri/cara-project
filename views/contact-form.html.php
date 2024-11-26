@@ -43,31 +43,38 @@
         </form>
         <div class="people">
             <div>
-                <img src="images/people/1.png" alt="member-img">
+                <img src="/project%20final%20de%20poles/public/assets/images/members/1.png" alt="member-img">
                 <p>
-                    <span>Lorem, ipsum</span>
+                    <span>James Harrington</span>
                     <br>
                     Phone: +000 123 000 77 88 
                     <br>
-                    Email: cara@gmail.com</p>
+                    Email: James@gmail.com
+                </p>
+                
             </div>
             <div>
-                <img src="images/people/2.png" alt="member-img">
+                <img src="/project%20final%20de%20poles/public/assets/images/members/2.png" alt="member-img">
+
                 <p>
-                    <span>Lorem, ipsum</span>
+                    <span>William Spencer</span>
                     <br>
                     Phone: +000 123 000 77 88 
                     <br>
-                    Email: cara@gmail.com</p>
+                    Email: William@gmail.com
+                </p>
+
             </div>
             <div>
-                <img src="images/people/3.png" alt="member-img">
+                <img src="/project%20final%20de%20poles/public/assets/images/members/3.png" alt="member-img">
                 <p>
-                    <span>Lorem, ipsum</span>
+                    <span>Elizabeth Whitaker</span>
                     <br>
                     Phone: +000 123 000 77 88 
                     <br>
-                    Email: cara@gmail.com</p>
+                    Email: Elizabeth@gmail.com
+                </p>
+
             </div>
         </div>
     </section>

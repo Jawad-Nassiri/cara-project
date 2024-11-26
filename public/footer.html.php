@@ -18,15 +18,15 @@
         </div>
         <div class="col">
             <h4>About</h4>
-            <a href="#">About us</a>
+            <a href="http://localhost/project%20final%20de%20poles/product/about">About us</a>
             <a href="#">Delivery Information</a>
             <a href="#">Privacy Policy</a>
             <a href="#">Terms & Conditions</a>
-            <a href="#">Contact Us</a>
+            <a href="http://localhost/project%20final%20de%20poles/contact/submitContactForm">Contact Us</a>
         </div>
         <div class="col">
             <h4>My Acount</h4>
-            <a href="#">Sign In</a>
+            <a href="http://localhost/project%20final%20de%20poles/Sign_In/signIn">Sign In</a>
             <a href="#">view Cart</a>
             <a href="#">My Wishlist</a>
             <a href="#">Track My Order</a>
