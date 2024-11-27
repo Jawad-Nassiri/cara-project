@@ -60,11 +60,11 @@
                 <h1>11/01</h1>
         </div>
     </section>
-    <section id="pagination" class="section-p1">
+    <!-- <section id="pagination" class="section-p1">
         <a href="#">1</a>
         <a href="#">2</a>
         <a href="#"><i class="fa-solid fa-arrow-right"></i></a>
-    </section>
+    </section> -->
     <section id="newsletter" class="section-p1 section-m1">
     <h2 class="title">Shop the Latest Styles – Fashion at Your Fingertips</h2>
     <p>At CARA we believe that fashion is more than just clothing – it's a way to express yourself.</p>

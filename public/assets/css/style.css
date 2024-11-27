@@ -1015,7 +1015,7 @@ form {
 
 /* Basket Page Start */
 
-#basket-page-header {
+/* #basket-page-header {
     position: relative;
     background-image: url('/project%20final%20de%20poles/public/assets/images/banners/basket-banner.jpg');
     background-position: center; 
@@ -1046,9 +1046,9 @@ form {
     position: relative;
     z-index: 1; 
     color: #fff;
-}
+} */
 
-#cart{
+/* #cart{
     overflow-x: auto;
 }
 
@@ -1116,7 +1116,7 @@ form {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-}
+} */
 
 #subtotal{
     width: 50%;
@@ -1706,6 +1706,12 @@ footer .copyright{
         width: 69px;
     }
 
+    /* Detail Page  */
+
+    
+
+
+
     /* Footer  */
 
     footer {
@@ -1915,19 +1921,6 @@ footer .copyright{
     }
 
     #banner3 .banner-box {
-        width: 100%;
-    }
-
-    /* single products */
-    #prodetails {
-        flex-direction: column;
-    }
-
-    #prodetails .single-pro-image {
-        width: 100%;
-    }
-
-    #prodetails .single-pro-details {
         width: 100%;
     }
 
