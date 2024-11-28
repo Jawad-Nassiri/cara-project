@@ -41,8 +41,8 @@
             <?php $productCount = count($products); ?>
             <?php for ($i = 0; $i < min(8, $productCount); $i++): ?>
                 <?php $product = $products[$i]; ?>
-                <div class="pro" data-id="<?= $product->getId() ?>">
-                    <img src="/project%20final%20de%20poles/public/assets/images/products/<?php echo htmlspecialchars($product->getPhoto()); ?>" alt="<?php echo htmlspecialchars($product->getTitre());?>">
+                <div class="pro">
+                    <img src="/project%20final%20de%20poles/public/assets/images/products/<?php echo htmlspecialchars($product->getPhoto()); ?>" class="product-img"  data-id="<?= $product->getId() ?>" alt="<?php echo htmlspecialchars($product->getTitre());?>">
                     <div class="des">
                         <span><?php echo htmlspecialchars($product->getMarque()); ?></span>
                         <h5><?php echo htmlspecialchars($product->getTitre()); ?></h5> 
@@ -56,7 +56,12 @@
                         </div>
                         <h4><?php echo htmlspecialchars(number_format($product->getPrix(), 2)); ?>€</h4>
                     </div>
-                    <a href="#"><i class="fa-sharp fa-solid fa-cart-shopping" id="basket-icon" data-id="<?= $product->getId(); ?>"></i></a>
+                    <div class="confirmation">
+                        <p>Add To Basket</p>
+                    </div>
+                    <div class="icon-container">
+                        <i class="fa-sharp fa-solid fa-cart-shopping" id="basket-icon"></i>
+                    </div>
                 </div>
             <?php endfor; ?>
         </div>
@@ -73,8 +78,8 @@
         <div class="pro-container">
             <?php for ($i = 8; $i < min(16, $productCount); $i++): ?>
                 <?php $product = $products[$i]; ?>
-                <div class="pro" data-id="<?= $product->getId() ?>">
-                    <img src="/project%20final%20de%20poles/public/assets/images/products/<?php echo htmlspecialchars($product->getPhoto()); ?>" alt="<?php echo htmlspecialchars($product->getTitre());?>">
+                <div class="pro">
+                    <img src="/project%20final%20de%20poles/public/assets/images/products/<?php echo htmlspecialchars($product->getPhoto()); ?>" class="product-img" data-id="<?= $product->getId() ?>" alt="<?php echo htmlspecialchars($product->getTitre());?>">
                     <div class="des">
                         <span><?php echo htmlspecialchars($product->getMarque()); ?></span>
                         <h5><?php echo htmlspecialchars($product->getTitre()); ?></h5> 
@@ -85,7 +90,12 @@
                         </div>
                         <h4><?php echo htmlspecialchars(number_format($product->getPrix(), 2)); ?>€</h4>
                     </div>
-                    <a href="#"><i class="fa-sharp fa-solid fa-cart-shopping" id="basket-icon" data-id="<?= $product->getId(); ?>"></i></a>
+                    <div class="confirmation">
+                        <p>Add To Basket</p>
+                    </div>
+                    <div class="icon-container">
+                        <i class="fa-sharp fa-solid fa-cart-shopping" id="basket-icon"></i>
+                    </div>
                 </div>
             <?php endfor; ?>
         <?php else: ?>
