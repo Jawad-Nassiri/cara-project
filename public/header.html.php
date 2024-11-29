@@ -16,6 +16,10 @@
     <link rel="stylesheet" href="http://localhost/project%20final%20de%20poles/public/assets/css/style.css">
     <!-- <link rel="stylesheet" href="/project%20final%20de%20poles/public/assets/css/style.css"> -->
 
+    <!-- Custom JS  -->
+    <!-- <script src="/project%20final%20de%20poles/public/assets/js/script.js" defer></script> -->
+
+
 </head>
 <body>
 
@@ -49,7 +53,7 @@
                 <?php endif; ?>
 
 
-                <li id="lg-bag"><a class="mouse-over" href="/project%20final%20de%20poles/Product/basket"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                <li id="lg-bag"><a class="mouse-over" href="/project%20final%20de%20poles/Basket/basket"><i class="fa-solid fa-bag-shopping"></i></a></li>
                 <a href="#" id="close"><i class="fa-solid fa-xmark" id="xmark"></i></a>
 
 

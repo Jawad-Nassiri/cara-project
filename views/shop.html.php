@@ -11,14 +11,12 @@
                 <img src="/project%20final%20de%20poles/public/assets/images/products/<?php echo htmlspecialchars($product->getPhoto()); ?>"
                 class="product-img"
                 data-id="<?= $product->getId() ?>"
-                data-product-photo="<?php echo htmlspecialchars($product->getPhoto()); ?>"
-                alt="<?php echo htmlspecialchars($product->getTitre());?>">
+                alt="<?php echo htmlspecialchars($product->getTitre()); ?>">
 
                 <div class="des">
-
                     <span><?= htmlspecialchars($product->getMarque()) ?></span>
 
-                    <h5 class="product-name" data-product-name="<?= htmlspecialchars($product->getTitre()) ?>">
+                    <h5 class="product-name">
                         <?= htmlspecialchars($product->getTitre()) ?>
                     </h5>
 
@@ -31,20 +29,22 @@
                         <?php endfor; ?>
                     </div>
 
-                    <h4 class="product-price" data-product-price="<?= htmlspecialchars($product->getPrix())?>">
+                    <h4 class="product-price">
                         <?= htmlspecialchars($product->getPrix()) ?>€
                     </h4>
-
                 </div>
+
                 <div class="confirmation">
                     <p>Add To Basket</p>
                 </div>
-                <div class="icon-container">
+
+                <div class="icon-container" data-product-id="<?= $product->getId() ?>" data-url = "<?= addLink('basket','addToBasket') ?>">
                     <i class="fa-sharp fa-solid fa-cart-shopping" id="basket-icon"></i>
                 </div>
             </div>
         <?php endforeach; ?>
     </div>
+
     <section id="pagination" class="section-p1">
         <a href="#">1</a>
         <a href="#">2</a>

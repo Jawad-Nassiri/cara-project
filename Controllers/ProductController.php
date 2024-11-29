@@ -4,16 +4,8 @@ namespace Controllers;
 
 
 use Models\repository\ProductRepository;
-// use Models\repository\AdminRepository;
 
 class ProductController extends BaseController {
-
-    // private $adminRepo;
-
-    // public function __construct()
-    // {
-    //     $this->adminRepo = new AdminRepository();
-    // }
     
     //Home Page Method
     public function index() {
@@ -47,5 +39,15 @@ class ProductController extends BaseController {
     public function basket() {
         $this->render('basket.html.php');
     }
+
+    // Basket Page Method
+    // public function basket() {
+    //     if (isset($_GET['id'])) {
+    //         $productId = $_GET['id'];
+    //         $productRepository = new ProductRepository();
+    //         $product = $productRepository->findProductById($productId);
+    //         $this->render('basket.html.php', ['product' => $product]);
+    //     }
+    // }
     
 }
