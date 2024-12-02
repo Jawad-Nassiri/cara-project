@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // Highlights the navigation link that matches the current page URL by adding the 'active' class.
     document.querySelectorAll('#navbar a').forEach(navItem => {
         if (location.href.includes(navItem.href)) navItem.classList.add('active');
@@ -31,12 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
         
         icon.addEventListener('click', () => {
             
-            // Toggle item added state and update the confirmation message with a check icon.
+            // Change basket icon's styles that are clicked by user
             updateBasketItemConfirmation(icon);
 
 
 
-            // Add the product in the basket after the basket icon is clicked 
+            // Add the product in the basket after the basket's icon is clicked 
             const productId = icon.getAttribute("data-product-id")
             const url = icon.getAttribute('data-url')
             const productPhoto = icon.closest('.pro').querySelector('.pro .product-img').getAttribute('src')
@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         });
 
+
     });
 
 
@@ -73,56 +74,66 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
-
+    // Change basket icon's styles that are clicked by user
     function updateBasketItemConfirmation(item) {
         const confirmationElement = item.previousElementSibling;
-
-
-        item.classList.toggle('activeColor');
         let checkIcon = confirmationElement.querySelector('.fa-check');
-
-        if (!checkIcon) {
+        const messageElement = confirmationElement.querySelector('div.confirmation > p');
+    
+        if (checkIcon) {
+            messageElement.textContent = 'Already in basket!';
+            checkIcon.remove();
+    
+            setTimeout(() => {
+                messageElement.textContent = 'Item Added';
+    
+                if (!confirmationElement.querySelector('.fa-check')) {
+                    checkIcon = document.createElement('i');
+                    checkIcon.setAttribute('class', 'fa-solid fa-check');
+                    confirmationElement.appendChild(checkIcon);
+    
+                    checkIcon.classList.add('color');
+                }
+            }, 3000);
+        } else {
             checkIcon = document.createElement('i');
             checkIcon.setAttribute('class', 'fa-solid fa-check');
-            checkIcon.classList.add('color');
             confirmationElement.appendChild(checkIcon);
-            confirmationElement.querySelector('div.confirmation > p').innerHTML = 'Item Added';
-        } else {
-            confirmationElement.removeChild(checkIcon);
-            confirmationElement.querySelector('div.confirmation > p').innerHTML = 'Add To Basket';
+            messageElement.textContent = 'Item Added';
+    
+            checkIcon.classList.add('color');
         }
-        confirmationElement.classList.toggle('activeColor');
-        confirmationElement.querySelector('div.confirmation > p').classList.toggle('color');
     
+        item.classList.add('activeColor');
+        confirmationElement.classList.add('activeColor');
+        messageElement.classList.add('color');
     }
+    
+    
 
 
-    // Remove the product from the basket after the remove icon is clicked 
-    function removeFromBasket(productId) {
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'url', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    document.querySelectorAll('.pro').forEach(productElement => {
+        const productId = productElement.querySelector('.icon-container').getAttribute('data-product-id');
+        // productsData comes from the shop page 
+        const isInBasket = productsData.some(item => item.id == productId);
     
-        xhr.send('product_id=' + productId);
-    
-        xhr.onload = function() {
-            if (xhr.status == 200) {
-                console.log('Product removed successfully');
-            } else {
-                console.log('Error removing product');
+        if (isInBasket) {
+            const item = productElement.querySelector('.icon-container');
+            const confirmationElement = item.previousElementSibling;
+            const checkIcon = confirmationElement.querySelector('.fa-check');
+            const messageElement = confirmationElement.querySelector('div.confirmation > p');
+
+            messageElement.textContent = 'Item Added';
+            item.classList.add('activeColor');
+            confirmationElement.classList.add('activeColor');
+            messageElement.classList.add('color');
+
+            if (!checkIcon) {
+                confirmationElement.innerHTML += '<i class="fa-solid fa-check color"></i>';
             }
-        };
-    }
-
-// Listen for click event on the remove icon
-    document.querySelector('tbody').addEventListener('click', function(event) {
-        if (event.target && event.target.id === 'remove-product') {
-            const productId = event.target.getAttribute('data-id');
-            removeFromBasket(productId);
         }
     });
-
-
 });
+
+
+

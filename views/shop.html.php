@@ -8,10 +8,10 @@
         <?php foreach ($products as $product): ?>
             <div class="pro">
 
-                <img src="/project%20final%20de%20poles/public/assets/images/products/<?php echo htmlspecialchars($product->getPhoto()); ?>"
+                <img src="/project%20final%20de%20poles/public/assets/images/products/<?= htmlspecialchars($product->getPhoto()); ?>"
                 class="product-img"
                 data-id="<?= $product->getId() ?>"
-                alt="<?php echo htmlspecialchars($product->getTitre()); ?>">
+                alt="<? htmlspecialchars($product->getTitre()); ?>">
 
                 <div class="des">
                     <span><?= htmlspecialchars($product->getMarque()) ?></span>
@@ -19,7 +19,6 @@
                     <h5 class="product-name">
                         <?= htmlspecialchars($product->getTitre()) ?>
                     </h5>
-
                     <div class="star">
                         <?php
                             $randomStars = rand(3, 5);
@@ -50,4 +49,9 @@
         <a href="#">2</a>
         <a href="#"><i class="fa-solid fa-arrow-right"></i></a>
     </section>
+
+    <script>
+        const productsData = <?php echo json_encode($_SESSION['basket'] ?? []); ?>;
+    </script>
+
 </section>

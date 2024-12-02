@@ -42,10 +42,17 @@
             <?php for ($i = 0; $i < min(8, $productCount); $i++): ?>
                 <?php $product = $products[$i]; ?>
                 <div class="pro">
-                    <img src="/project%20final%20de%20poles/public/assets/images/products/<?php echo htmlspecialchars($product->getPhoto()); ?>" class="product-img"  data-id="<?= $product->getId() ?>" alt="<?php echo htmlspecialchars($product->getTitre());?>">
+                    <img src="/project%20final%20de%20poles/public/assets/images/products/<?php echo htmlspecialchars($product->getPhoto()); ?>"
+                    class="product-img"
+                    data-id="<?= $product->getId() ?>"
+                    alt="<?php echo htmlspecialchars($product->getTitre());?>">
+
                     <div class="des">
-                        <span><?php echo htmlspecialchars($product->getMarque()); ?></span>
-                        <h5><?php echo htmlspecialchars($product->getTitre()); ?></h5> 
+                        <span><?= htmlspecialchars($product->getMarque()); ?></span>
+                        <h5 class="product-name">
+                            <?= htmlspecialchars($product->getTitre()); ?>
+                        </h5> 
+
                         <div class="star">
                             <?php
                                 $randomStars = rand(3, 5);
@@ -54,14 +61,21 @@
                                 <i class="fas fa-star"></i> 
                             <?php endfor; ?>
                         </div>
-                        <h4><?php echo htmlspecialchars(number_format($product->getPrix(), 2)); ?>€</h4>
+
+                        <h4 class="product-price">
+                            <?= htmlspecialchars(number_format($product->getPrix(), 2)); ?>€
+                        </h4>
+
                     </div>
+
                     <div class="confirmation">
                         <p>Add To Basket</p>
                     </div>
-                    <div class="icon-container">
+
+                    <div class="icon-container" data-product-id="<?= $product->getId() ?>" data-url = "<?= addLink('basket','addToBasket') ?>">
                         <i class="fa-sharp fa-solid fa-cart-shopping" id="basket-icon"></i>
                     </div>
+
                 </div>
             <?php endfor; ?>
         </div>
@@ -79,22 +93,35 @@
             <?php for ($i = 8; $i < min(16, $productCount); $i++): ?>
                 <?php $product = $products[$i]; ?>
                 <div class="pro">
-                    <img src="/project%20final%20de%20poles/public/assets/images/products/<?php echo htmlspecialchars($product->getPhoto()); ?>" class="product-img" data-id="<?= $product->getId() ?>" alt="<?php echo htmlspecialchars($product->getTitre());?>">
+                    <img src="/project%20final%20de%20poles/public/assets/images/products/<?= htmlspecialchars($product->getPhoto()); ?>"
+                    class="product-img"
+                    data-id="<?= $product->getId() ?>"
+                    alt="<?php echo htmlspecialchars($product->getTitre());?>">
+
                     <div class="des">
-                        <span><?php echo htmlspecialchars($product->getMarque()); ?></span>
-                        <h5><?php echo htmlspecialchars($product->getTitre()); ?></h5> 
+                        <span><?= htmlspecialchars($product->getMarque()); ?></span>
+
+                        <h5 class="product-name">
+                            <?= htmlspecialchars($product->getTitre()); ?>
+                        </h5> 
+
                         <div class="star">
                             <?php for ($j = 0; $j < 5; $j++): ?>
                                 <i class="fas fa-star"></i> 
                             <?php endfor; ?>
                         </div>
-                        <h4><?php echo htmlspecialchars(number_format($product->getPrix(), 2)); ?>€</h4>
+
+                        <h4 class="product-price">
+                            <?= htmlspecialchars(number_format($product->getPrix(), 2)); ?>€
+                        </h4>
                     </div>
+
                     <div class="confirmation">
                         <p>Add To Basket</p>
                     </div>
-                    <div class="icon-container">
-                        <i class="fa-sharp fa-solid fa-cart-shopping" id="basket-icon"></i>
+
+                    <div class="icon-container" data-product-id="<?= $product->getId() ?>" data-url = "<?= addLink('basket','addToBasket') ?>">
+                    <i class="fa-sharp fa-solid fa-cart-shopping" id="basket-icon"></i>
                     </div>
                 </div>
             <?php endfor; ?>

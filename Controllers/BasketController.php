@@ -37,4 +37,5 @@ class BasketController extends BaseController {
 
         $this->render('basket.html.php', ['basket' => $basket]);
     }
+
 }
