@@ -99,6 +99,38 @@ class AdminAddProductController extends BaseController
         return $products;
     }
 
+
+    // Removing the product form the admin list when the admin click on the delete button
+    public function deleteProduct($id) {
+        $this->checkAdminAccess();
+        
+        $product = $this->adminRepo->getProductByIdForAdmin($id);
+        
+        if ($product) {
+            $imagePath = __DIR__ . '/../public/assets/images/products/' . $product->getPhoto();
+            
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+            
+            $isDeleted = $this->adminRepo->deleteProductForAdmin($id);
+            
+            if ($isDeleted) {
+                echo json_encode(['success' => true]);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Product could not be deleted from the database.']);
+            }
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Product not found']);
+        }
+    }
+    
+    
+
 }
 
 
+
+
+// 
+// f1.jpg

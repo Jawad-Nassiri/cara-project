@@ -15,7 +15,7 @@
 
                 <div class="des">
                     <span><?= htmlspecialchars($product->getMarque()) ?></span>
-
+                    
                     <h5 class="product-name">
                         <?= htmlspecialchars($product->getTitre()) ?>
                     </h5>

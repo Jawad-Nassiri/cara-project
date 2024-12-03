@@ -47,6 +47,9 @@
 
 </form>
 
+
+
+
 <?php if (isset($products) && count($products) > 0): ?>
     <div class="table-wrapper admin-product-table">
         <h1 class="all-product">All Products</h1>
@@ -78,12 +81,8 @@
                             <?php endif; ?>
                         </td>
                         <td>
-                            <form method="POST" action="/product/edit/<?php echo $product->getId(); ?>" style="display: inline;">
-                                <button type="submit" class="edit-btn">Edit</button>
-                            </form>
-                            <form method="POST" action="/product/delete/<?php echo $product->getId(); ?>" style="display: inline;">
-                                <button type="submit" class="delete-btn">Delete</button>
-                            </form>
+                            <button class="edit-btn" data-id="<?= $product->getId(); ?>">Edit</button>
+                            <button class="delete-btn" data-id="<?= $product->getId(); ?>">Delete</button>
                         </td>
                     </tr>
                 <?php endforeach; ?>

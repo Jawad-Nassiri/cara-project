@@ -33,25 +33,4 @@ class DetailController extends BaseController
             exit();
         }
     }
-    
-
-
-    // public function addProductInBasket() {
-    //     if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-    //         $productId = $_GET['id'];
-    //         $product = $this->adminRepo->getProductByIdForAdmin($productId);
-
-    //         if ($product) {
-    //             return $this->render('basket.html.php', [
-    //                 'product' => $product
-    //             ]);
-    //         } else {
-    //             echo "Product not found!";
-    //             exit();
-    //         }
-    //     }else {
-    //         echo "Invalid product ID!";
-    //         exit();
-    //     }
-    // }
 }

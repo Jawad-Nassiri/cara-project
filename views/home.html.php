@@ -137,3 +137,7 @@
     <p>At CARA we believe that fashion is more than just clothing – it's a way to express yourself.</p>
     <a class="shop" href="http://localhost/project%20final%20de%20poles/product/shop">Shop</a>
 </section>
+
+<script>
+    const productsData = <?php echo json_encode($_SESSION['basket'] ?? []); ?>;
+</script>

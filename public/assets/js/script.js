@@ -28,13 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
         icon.addEventListener('mouseleave', () => confirmationElement.style.display = 'none');
         
 
-        
+        // Onclick event for the basket icon 
         icon.addEventListener('click', () => {
-            
-            // Change basket icon's styles that are clicked by user
-            updateBasketItemConfirmation(icon);
-
-
 
             // Add the product in the basket after the basket's icon is clicked 
             const productId = icon.getAttribute("data-product-id")
@@ -57,61 +52,22 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(response => response.json())
             .then(data => {
+                if(data.isNotLogged) {
+                    location.href = '/project%20final%20de%20poles/Sign_In/signIn'
+                }else {
+                    // Change basket icon's styles that are clicked by user
+                    updateBasketItemConfirmation(icon);
+                };
             })
             .catch(error => console.error('Error:', error));
 
         });
-
-
     });
-
-
-
-    // Remove the product from the basket after the remove icon is clicked 
-    document.querySelectorAll('i#remove-product').forEach(removeIcon => {
-        removeIcon.addEventListener('click', event => event.target.closest('tr').remove());
-    });
-
-
-
-    // Change basket icon's styles that are clicked by user
-    function updateBasketItemConfirmation(item) {
-        const confirmationElement = item.previousElementSibling;
-        let checkIcon = confirmationElement.querySelector('.fa-check');
-        const messageElement = confirmationElement.querySelector('div.confirmation > p');
-    
-        if (checkIcon) {
-            messageElement.textContent = 'Already in basket!';
-            checkIcon.remove();
-    
-            setTimeout(() => {
-                messageElement.textContent = 'Item Added';
-    
-                if (!confirmationElement.querySelector('.fa-check')) {
-                    checkIcon = document.createElement('i');
-                    checkIcon.setAttribute('class', 'fa-solid fa-check');
-                    confirmationElement.appendChild(checkIcon);
-    
-                    checkIcon.classList.add('color');
-                }
-            }, 3000);
-        } else {
-            checkIcon = document.createElement('i');
-            checkIcon.setAttribute('class', 'fa-solid fa-check');
-            confirmationElement.appendChild(checkIcon);
-            messageElement.textContent = 'Item Added';
-    
-            checkIcon.classList.add('color');
-        }
-    
-        item.classList.add('activeColor');
-        confirmationElement.classList.add('activeColor');
-        messageElement.classList.add('color');
-    }
     
     
 
 
+    // Getting the product from basket and adding styles to them
     document.querySelectorAll('.pro').forEach(productElement => {
         const productId = productElement.querySelector('.icon-container').getAttribute('data-product-id');
         // productsData comes from the shop page 
@@ -133,7 +89,91 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+
+    
+        // Remove the product from the basket after the remove icon is clicked using AJAX
+        document.querySelectorAll('i#remove-product').forEach(removeIcon => {
+            removeIcon.addEventListener('click', (event) => {
+                const productId = event.target.getAttribute('data-id');
+
+                fetch('/project final de poles/basket/removeFromBasket', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ id: productId }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        event.target.closest('tr').remove();
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            })
+        });
+
+
+        // Change basket icon's styles that are clicked by user
+        function updateBasketItemConfirmation(item) {
+        const confirmationElement = item.previousElementSibling;
+        let checkIcon = confirmationElement.querySelector('.fa-check');
+        const messageElement = confirmationElement.querySelector('div.confirmation > p');
+    
+        if (checkIcon) {
+            messageElement.textContent = 'Already in basket!';
+            checkIcon.remove();
+    
+            setTimeout(() => {
+                messageElement.textContent = 'Item Added';
+                if (!confirmationElement.querySelector('.fa-check')) {
+                    checkIcon = document.createElement('i');
+                    checkIcon.setAttribute('class', 'fa-solid fa-check');
+                    confirmationElement.appendChild(checkIcon);
+    
+                    checkIcon.classList.add('color');
+                }
+            }, 3000);
+        } else {
+            checkIcon = document.createElement('i');
+            checkIcon.setAttribute('class', 'fa-solid fa-check');
+            confirmationElement.appendChild(checkIcon);
+            messageElement.textContent = 'Item Added';
+    
+            checkIcon.classList.add('color');
+        }
+    
+        item.classList.add('activeColor');
+        confirmationElement.classList.add('activeColor');
+        messageElement.classList.add('color');
+    }
+
+
+    // Removing the product form the admin list when the admin click on the delete button
+    
+    document.querySelectorAll('button.delete-btn').forEach(deleteBtn => {
+        deleteBtn.addEventListener('click', function (event) {
+            const productId = this.getAttribute('data-id');
+            const row = this.closest('tr');
+    
+            fetch(`/project%20final%20de%20poles/adminAddProduct/deleteProduct/${productId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: productId }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    row.remove();
+                } else {
+                    alert('Error deleting product: ' + (data.message || 'Unknown error'));
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    });
+    
 });
-
-
-

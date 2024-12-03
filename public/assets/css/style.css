@@ -299,6 +299,7 @@ button.white {
 #product1 .pro .des i{
     color: rgb(240, 117, 18);
     font-size: 12px;
+    user-select: none;
 }
 
 #product1 .pro .des h4{
@@ -1180,13 +1181,7 @@ form {
     height: auto;
 }
 
-.admin-product-table td form {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.admin-product-table td form button {
+.admin-product-table td button {
     width: 120px;
     display: block;
     margin-top: 5px; 
@@ -1200,23 +1195,21 @@ form {
     flex: 1;
 }
 
-.admin-product-table td form .edit-btn {
+.admin-product-table td .edit-btn {
     background-color: #088178;
 }
 
-.admin-product-table td form .edit-btn:hover {
+.admin-product-table td .edit-btn:hover {
     background-color: #06665f;
 }
 
-.admin-product-table td form .delete-btn {
+.admin-product-table td .delete-btn {
     background-color: red;
 }
 
-.admin-product-table td form .delete-btn:hover {
+.admin-product-table td .delete-btn:hover {
     background-color: darkred;
 }
-
-
 
 
 

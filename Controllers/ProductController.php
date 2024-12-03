@@ -39,15 +39,5 @@ class ProductController extends BaseController {
     public function basket() {
         $this->render('basket.html.php');
     }
-
-    // Basket Page Method
-    // public function basket() {
-    //     if (isset($_GET['id'])) {
-    //         $productId = $_GET['id'];
-    //         $productRepository = new ProductRepository();
-    //         $product = $productRepository->findProductById($productId);
-    //         $this->render('basket.html.php', ['product' => $product]);
-    //     }
-    // }
     
 }
