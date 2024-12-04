@@ -53,10 +53,15 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 if(data.isNotLogged) {
-                    location.href = '/project%20final%20de%20poles/Sign_In/signIn'
+
+                    location.href = '/project%20final%20de%20poles/Sign_In/signIn';
+                    alert('You need to create an account to add products to the basket.')
+
                 }else {
                     // Change basket icon's styles that are clicked by user
                     updateBasketItemConfirmation(icon);
+                    const basketIcon = document.querySelector('#lg-bag a');
+                    basketIcon.setAttribute('data-count', data.count);
                 };
             })
             .catch(error => console.error('Error:', error));
@@ -108,6 +113,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(data => {
                     if (data.success) {
                         event.target.closest('tr').remove();
+                        const basketIcon = document.querySelector('#lg-bag a');
+                        console.log(basketIcon)
+                        basketIcon.setAttribute('data-count', data.count);
                     }
                 })
                 .catch(error => console.error('Error:', error));
@@ -175,5 +183,41 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Error:', error));
         });
     });
+
+
+
+    // Function to update the subtotal and the total amount in the basket
+    function updateCart() {
+        let totalAmount = 0;
+
+        document.querySelectorAll('#cart tbody tr').forEach(row => {
+            const price = parseFloat(row.querySelector('td:nth-child(4)').textContent.replace('€', '').trim());
+            const quantity = parseInt(row.querySelector('.item-quantity').value);
+            const subtotal = price * quantity;
+
+            row.querySelector('.item-subtotal').textContent = `${subtotal.toFixed(2)}€`;
+            totalAmount += subtotal;
+            document.querySelector('#total-amount').textContent = `${totalAmount.toFixed(2)}€`;
+        });
+        
+    }
+
+    document.querySelectorAll('.item-quantity').forEach(input => {
+        input.addEventListener('input', updateCart);
+    });
+
+    document.querySelectorAll('#remove-product').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const row = this.closest('tr');
+            row.remove();
+            updateCart();
+        });
+    });
+
+    updateCart();
+
+    
+    
+
     
 });

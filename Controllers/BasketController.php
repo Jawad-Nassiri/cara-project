@@ -40,7 +40,11 @@ class BasketController extends BaseController {
                     'price' => $productPrice
                 ];
             }
-            echo json_encode(['message' => 'Product added to basket']);
+
+
+            $_SESSION['basket_count'] = count($_SESSION['basket']);
+
+            echo json_encode(['message' => 'Product added to basket', 'count' => $_SESSION['basket_count']]);
         }else {
             echo json_encode(['message' => 'Invalid product data']);
         }
@@ -60,8 +64,9 @@ class BasketController extends BaseController {
                     });
     
                     $_SESSION['basket'] = array_values($_SESSION['basket']);
+                    $_SESSION['basket_count'] = count($_SESSION['basket']);
     
-                    echo json_encode(['success' => true, 'message' => 'Product removed from basket']);
+                    echo json_encode(['success' => true, 'message' => 'Product removed from basket', 'count' => $_SESSION['basket_count']]);
                 } else {
                     echo json_encode(['success' => false, 'message' => 'Product not found in basket']);
                 }

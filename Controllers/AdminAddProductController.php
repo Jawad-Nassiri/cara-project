@@ -100,7 +100,7 @@ class AdminAddProductController extends BaseController
     }
 
 
-    // Removing the product form the admin list when the admin click on the delete button
+    // Removing the product from the admin list when the admin click on the delete button
     public function deleteProduct($id) {
         $this->checkAdminAccess();
         
@@ -124,13 +124,45 @@ class AdminAddProductController extends BaseController
             echo json_encode(['success' => false, 'message' => 'Product not found']);
         }
     }
-    
-    
+
+
+    // Editing the product from the admin list when the admin click on the delete edit
+    public function editProduct($id){
+        $this->checkAdminAccess();
+
+        $product = $this->adminRepo->getProductByIdForAdmin($id);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Handle the form submission here
+            $handler = new ProductHandleRequest();
+            $product = $handler->handleProductRequest($product);
+
+            if ($product && $handler->isValid()) {
+                $isProductUpdated = $this->adminRepo->updateProductForAdmin(
+                    $product->getId(),
+                    $product->getCategorie(),
+                    $product->getTitre(),
+                    $product->getMarque(),
+                    $product->getDescription(),
+                    $product->getPublic(),
+                    $product->getPhoto(),
+                    $product->getPrix(),
+                    $product->getStock()
+                );
+
+                if ($isProductUpdated) {
+                    header("Location: /admin/products"); // redirect to product list
+                    exit();
+                } else {
+                    $handler->setErrorsForm(['general' => 'There was an error updating the product.']);
+                }
+            }
+        }
+
+        return $this->render('admin-edit-product.html.php', [
+            'product' => $product,
+            'errors' => $handler->getErrorsForm() ?? [],
+        ]);
+    }
 
 }
-
-
-
-
-// 
-// f1.jpg

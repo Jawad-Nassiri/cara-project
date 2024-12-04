@@ -171,7 +171,7 @@ select, input[type="number"] {
             </tr>
         </thead>
         <tbody>
-            <?php if (!empty($basket)): ?>
+            <?php if (!empty($basket)): ?>   
                 <?php foreach ($basket as $item): ?>
                     <tr id="product-row" data-product-id="<?= $item['id']; ?>">
                         <td><i class="fa-solid fa-trash" id="remove-product" data-id="<?= $item['id']; ?>"></i></td>
@@ -211,4 +211,3 @@ select, input[type="number"] {
         <a href="#">Continue</a>
     </div>
 </section>
-
