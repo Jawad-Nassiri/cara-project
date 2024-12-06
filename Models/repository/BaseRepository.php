@@ -70,4 +70,28 @@ abstract class BaseRepository {
         }
         return false;
     }
+
+
+    // Edit a product
+    public function editProduct($id, $categorie, $titre, $marque, $description, $public, $photo, $prix, $stock) {
+        $query = "UPDATE product SET categorie = :categorie, titre = :titre, marque = :marque, description = :description, 
+        public = :public, photo = :photo, prix = :prix, stock = :stock 
+        WHERE id = :id";
+
+        $stmt = $this->connection->prepare($query);
+
+        // Bind parameters
+        $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
+        $stmt->bindParam(':categorie', $categorie);
+        $stmt->bindParam(':titre', $titre);
+        $stmt->bindParam(':marque', $marque);
+        $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':public', $public);
+        $stmt->bindParam(':photo', $photo);
+        $stmt->bindParam(':prix', $prix);
+        $stmt->bindParam(':stock', $stock, \PDO::PARAM_INT);
+
+        return $stmt->execute();
+    }
+
 }

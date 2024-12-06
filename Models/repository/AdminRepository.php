@@ -19,4 +19,8 @@ class AdminRepository extends BaseRepository {
     public function getProductByIdForAdmin($id) {
         return $this->findProductById($id);
     }
+
+    public function editProductForAdmin($id, $categorie, $titre, $marque, $description, $public, $photo, $prix, $stock) {
+        return $this->editProduct($id, $categorie, $titre, $marque, $description, $public, $photo, $prix, $stock);
+    }
 }

@@ -114,7 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (data.success) {
                         event.target.closest('tr').remove();
                         const basketIcon = document.querySelector('#lg-bag a');
-                        console.log(basketIcon)
                         basketIcon.setAttribute('data-count', data.count);
                     }
                 })
@@ -158,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // Removing the product form the admin list when the admin click on the delete button
+    // Removing the product from the admin list when the admin click on the delete button
     
     document.querySelectorAll('button.delete-btn').forEach(deleteBtn => {
         deleteBtn.addEventListener('click', function (event) {
@@ -184,40 +183,61 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    
+
+    // Edit the product from the admin list when the admin click on the edit button
+    document.querySelectorAll('button.edit-btn').forEach((editBtn) => {
+        editBtn.addEventListener('click', () => {
+            let productId = editBtn.getAttribute('data-id')
+            location.href = `/project%20final%20de%20poles/AdminAddProduct/editProduct/${productId}`;
+        })
+    })
+
+
 
 
     // Function to update the subtotal and the total amount in the basket
     function updateCart() {
         let totalAmount = 0;
-
+    
         document.querySelectorAll('#cart tbody tr').forEach(row => {
-            const price = parseFloat(row.querySelector('td:nth-child(4)').textContent.replace('€', '').trim());
-            const quantity = parseInt(row.querySelector('.item-quantity').value);
+            const priceCell = row.querySelector('td.price');
+            const price = priceCell ? parseFloat(priceCell.textContent.replace('€', '').trim()) : 0;
+    
+            const quantityInput = row.querySelector('td .item-quantity');
+            const quantity = quantityInput ? parseInt(quantityInput.value) : 0;
+    
             const subtotal = price * quantity;
-
-            row.querySelector('.item-subtotal').textContent = `${subtotal.toFixed(2)}€`;
+    
+            const subtotalCell = row.querySelector('.item-subtotal');
+            if (subtotalCell) {
+                subtotalCell.textContent = `${subtotal.toFixed(2)}€`;
+            }
+    
             totalAmount += subtotal;
-            document.querySelector('#total-amount').textContent = `${totalAmount.toFixed(2)}€`;
         });
-        
+    
+        const totalAmountCell = document.querySelector('#total-amount');
+        if (totalAmountCell) {
+            totalAmountCell.textContent = `${totalAmount.toFixed(2)}€`;
+        }
     }
-
+    
     document.querySelectorAll('.item-quantity').forEach(input => {
         input.addEventListener('input', updateCart);
     });
-
+    
     document.querySelectorAll('#remove-product').forEach(btn => {
         btn.addEventListener('click', function () {
-            const row = this.closest('tr');
-            row.remove();
-            updateCart();
+            const row = this.closest('tr'); 
+            if (row) {
+                row.remove(); 
+                updateCart();
+            }
         });
     });
-
+    
     updateCart();
-
-    
     
 
-    
 });

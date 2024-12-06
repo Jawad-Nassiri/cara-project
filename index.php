@@ -1,6 +1,3 @@
-
-
-
 <?php
 require "inc/init.inc.php";
 

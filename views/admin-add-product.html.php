@@ -48,7 +48,7 @@
 </form>
 
 
-
+<!-- All Products list  -->
 
 <?php if (isset($products) && count($products) > 0): ?>
     <div class="table-wrapper admin-product-table">
@@ -94,3 +94,8 @@
 <?php endif; ?>
 
     
+
+
+
+
+<!-- All users list  -->

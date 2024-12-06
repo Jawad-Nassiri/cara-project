@@ -177,7 +177,7 @@ select, input[type="number"] {
                         <td><i class="fa-solid fa-trash" id="remove-product" data-id="<?= $item['id']; ?>"></i></td>
                         <td><img src="<?= $item['photo']; ?>" alt="<?= $item['name']; ?>"></td>
                         <td><?= $item['name']; ?></td>
-                        <td><?= $item['price']; ?>€</td>
+                        <td class="price"><?= $item['price']; ?>€</td>
                         <td>
                             <select class="item-size">
                                 <option value="small" selected>Small</option>

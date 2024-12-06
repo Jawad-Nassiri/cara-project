@@ -9,7 +9,6 @@ class ProductHandleRequest extends BaseHandleRequest {
     public function handleProductRequest(Product $product) {
         if ($this->isSubmitted()) {
             $errors = $this->validateForm();
-
             if (empty($errors)) {
                 $product->setCategorie($_POST['categorie']);
                 $product->setTitre($_POST['titre']);
@@ -47,9 +46,9 @@ class ProductHandleRequest extends BaseHandleRequest {
         }
 
         
-        if (!isset($_FILES['photo']) || $_FILES['photo']['error'] !== 0) {
-            $errors['photo'] = "Photo is required.";
-        }
+        // if (!isset($_FILES['photo']) || $_FILES['photo']['error'] !== 0) {
+        //     $errors['photo'] = "Photo is required.";
+        // }
 
         if (empty($_POST['prix'])) {
             $errors['prix'] = "Price is required.";
