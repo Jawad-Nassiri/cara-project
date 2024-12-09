@@ -5,6 +5,7 @@
 
 <form method="post" action="<?= addLink('AdminAddProduct','addProduct') ?>" enctype="multipart/form-data" class="product-form">
     <div class="form-group">
+    <h1 class="all-product">Add New Product</h1>
         <label for="categorie" class="form-label">Category:</label>
         <input type="text" id="categorie" name="categorie" class="form-input" required>
     </div>
@@ -101,5 +102,34 @@
 
 
 
+<!-- Add user form  -->
 
+
+<form method="post" action="<?= addLink('AdminAddUser','addUser') ?>" class="user-form">
+        <div class="input-group">
+            <h1 class="all-product">Create User Account</h1>
+            <label for="username" class="input-label">Username:</label>
+            <input type="text" id="username" name="username" class="input-field" required>
+        </div>
+    
+        <div class="input-group">
+            <label for="email" class="input-label">Email:</label>
+            <input type="email" id="email" name="email" class="input-field" required>
+        </div>
+    
+        <div class="input-group">
+            <label for="password" class="input-label">Password:</label>
+            <input type="password" id="password" name="password" class="input-field" required>
+        </div>
+    
+        <div class="input-group" id="user-list">
+            <label for="statut_admin" class="input-label">Admin Status:</label>
+            <select id="statut_admin" name="statut_admin" class="input-select">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+        </div>
+    
+        <button type="submit" class="submit-btn" name="submit">Add User</button>
+    </form>
 <!-- All users list  -->
