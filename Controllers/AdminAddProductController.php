@@ -139,14 +139,10 @@ class AdminAddProductController extends BaseController
         if ($product) {
             $handler = new ProductHandleRequest();
     
-            // If the form is submitted
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                // Handle the form data and validate (except for the photo)
                 $product = $handler->handleProductRequest($product);
     
-                // Check if there are no validation errors
                 if ($product && $handler->isValid()) {
-                    // Handle the photo separately (if uploaded)
                     if ($_FILES['photo']['error'] === 0) {
                         $targetDir = __DIR__ . '/../public/assets/images/products/';
                         $fileName = basename($_FILES["photo"]["name"]);
@@ -158,7 +154,6 @@ class AdminAddProductController extends BaseController
                                 if (move_uploaded_file($_FILES["photo"]["tmp_name"], $targetFile)) {
                                     $product->setPhoto($fileName);  // Set the new photo if uploaded
                                 } else {
-                                    // Set an error if uploading fails
                                     $handler->setErrorsForm(['photo' => 'Error uploading the photo.']);
                                 }
                             } else {

@@ -149,15 +149,16 @@
         <h6>Shop / <?= htmlspecialchars($product->getCategorie()); ?></h6>
         <h4><?= htmlspecialchars($product->getTitre()); ?></h4>
         <h2><?= htmlspecialchars($product->getPrix()); ?>€</h2>
-        <select>
-            <option>Select Size</option>
-            <option>XL</option>
-            <option>XXL</option>
-            <option>Small</option>
-            <option>Large</option>
+
+        <select id="product-size">
+            <option value="small" selected>Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+            <option value="x-large">X-Large</option>
         </select>
+
         <input type="number" value="1">
-        <button class="normal">Add to cart</button>
+        <button class="normal" data-product-id="<?= $product->getId() ?>" data-url = "<?= addLink('basket','addToBasket') ?>">Add to cart</button>
         <h4>Product details</h4>
         <span><?= htmlspecialchars($product->getDescription()); ?></span>
     </div>

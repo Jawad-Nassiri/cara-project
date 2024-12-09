@@ -15,6 +15,8 @@ class BasketController extends BaseController {
         $data = json_decode(file_get_contents('php://input'), true);
         if ($data) {
             $productId = $data['id'];
+            $productSize = isset($data['size']) ? $data['size'] : 'small'; 
+            $productQuantity = isset($data['quantity']) ? $data['quantity'] : 1;
             $productPhoto = $data['photo'];
             $productName = $data['name'];
             $productPrice = $data['price'];
@@ -23,10 +25,10 @@ class BasketController extends BaseController {
                 $_SESSION['basket'] = [];
             }
     
-             // Check if product already exists in the basket
             $productExists = false;
+
             foreach ($_SESSION['basket'] as &$item) {
-                if ($item['id'] == $productId) {
+                if ($item['id'] == $productId && $item['size'] == $productSize) {
                     $productExists = true;
                     break;
                 }
@@ -35,6 +37,8 @@ class BasketController extends BaseController {
             if (!$productExists) {
                 $_SESSION['basket'][] = [
                     'id' => $productId,
+                    'size' => $productSize,
+                    'quantity' => $productQuantity,
                     'photo' => $productPhoto,
                     'name' => $productName,
                     'price' => $productPrice

@@ -1151,6 +1151,44 @@ form {
 
 /* Admin Table*/
 
+.list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 400px;
+    height: 100px;
+    margin-left: 50px;
+}
+
+.list a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #088178;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.list a:hover {
+    background-color: #fff;
+    color: #088178;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    border: 2px solid #088178;
+    font-weight: 600;
+}
+
+.list a.active {
+    background-color: #fff;
+    color: #088178;
+    border: 2px solid #088178;
+    font-weight: 500;
+}
+
+
+
 .admin-product-table {
     margin: 50px auto;
     max-width: 90%;

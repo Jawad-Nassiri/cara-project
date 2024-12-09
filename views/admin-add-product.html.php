@@ -1,3 +1,8 @@
+<div class="list">
+    <a href="#product-list">Product List</a>
+    <a href="#user-list">User List</a>
+</div>
+
 <form method="post" action="<?= addLink('AdminAddProduct','addProduct') ?>" enctype="multipart/form-data" class="product-form">
     <div class="form-group">
         <label for="categorie" class="form-label">Category:</label>
@@ -38,21 +43,20 @@
         <input type="number" id="prix" name="prix" class="form-input" step="0.01" required>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" id="product-list">
         <label for="stock" class="form-label">Stock:</label>
         <input type="number" id="stock" name="stock" class="form-input" required>
     </div>
 
     <button type="submit" class="form-submit" name="submit">Add Product</button>
-
 </form>
 
 
 <!-- All Products list  -->
 
 <?php if (isset($products) && count($products) > 0): ?>
+    <h1 class="all-product">All Products</h1>
     <div class="table-wrapper admin-product-table">
-        <h1 class="all-product">All Products</h1>
         <table>
             <thead>
                 <tr>

@@ -179,14 +179,21 @@ select, input[type="number"] {
                         <td><?= $item['name']; ?></td>
                         <td class="price"><?= $item['price']; ?>€</td>
                         <td>
-                            <select class="item-size">
+                            <!-- <select class="item-size">
                                 <option value="small" selected>Small</option>
                                 <option value="medium">Medium</option>
                                 <option value="large">Large</option>
                                 <option value="x-large">X-Large</option>
+                            </select> -->
+
+                            <select class="item-size" data-product-id="<?= $item['id']; ?>">
+                                <option value="small" <?= ($item['size'] == 'small') ? 'selected' : ''; ?>>Small</option>
+                                <option value="medium" <?= ($item['size'] == 'medium') ? 'selected' : ''; ?>>Medium</option>
+                                <option value="large" <?= ($item['size'] == 'large') ? 'selected' : ''; ?>>Large</option>
+                                <option value="x-large" <?= ($item['size'] == 'x-large') ? 'selected' : ''; ?>>X-Large</option>
                             </select>
                         </td>
-                        <td><input type="number" min="1" value="1" class="item-quantity"></td>
+                        <td><input type="number" min="1" class="item-quantity" value="<?= isset($item['quantity']) ? $item['quantity'] : 1; ?>"></td>
                         <td class="item-subtotal"><?= $item['price']; ?>€</td>
                     </tr>
                 <?php endforeach; ?>

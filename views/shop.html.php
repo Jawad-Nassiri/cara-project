@@ -7,7 +7,6 @@
     <div class="pro-container">
         <?php foreach ($products as $product): ?>
             <div class="pro">
-
                 <img src="/project%20final%20de%20poles/public/assets/images/products/<?= htmlspecialchars($product->getPhoto()); ?>"
                 class="product-img"
                 data-id="<?= $product->getId() ?>"

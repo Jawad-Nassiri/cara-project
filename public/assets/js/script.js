@@ -1,9 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // Highlights the navigation link that matches the current page URL by adding the 'active' class.
-    document.querySelectorAll('#navbar a').forEach(navItem => {
-        if (location.href.includes(navItem.href)) navItem.classList.add('active');
-    });
+    const navLinks = document.querySelectorAll('#navbar a');
+    const currentHref = location.href.endsWith('/') ? location.href.slice(0, -1) : location.href;
+
+    navLinks.forEach(navItem => {
+        let navHref = navItem.href;
+    
+        if (navHref[navHref.length - 1] === '/') {
+            navHref = navHref.slice(0, navHref.length - 1);
+        }
+
+        if (currentHref === navHref || (currentHref === "http://localhost/project%20final%20de%20poles" && navHref.endsWith("/product/index"))){
+            navItem.classList.add('active');
+        }
+});
+
 
 
     // These are for the opening and closing the nav bar in tablet and mobile devices!!
@@ -20,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // Show/hide the confirmation message based on mouse enter and leave events on each basket icon
-    
     document.querySelectorAll('div.icon-container').forEach((icon) => {
 
         const confirmationElement = icon.previousElementSibling;
@@ -238,6 +249,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     updateCart();
+
+
+    ///////////////////////////////////////////////////
+
+    document.querySelector('button.normal').addEventListener('click', () => {
+        const productId = document.querySelector('.normal').getAttribute('data-product-id');
+        const productSize = document.querySelector('#product-size').value;
+        const productQuantity = document.querySelector('input[type="number"]').value;
+        const productPhoto = document.querySelector('#main-image').getAttribute('src');
+        const productName = document.querySelector('h4').textContent;
+        const productPrice = document.querySelector('h2').textContent.replace('€', '');
+    
+        const productData = {
+            id: productId,
+            size: productSize,
+            quantity: productQuantity,
+            photo: productPhoto,
+            name: productName,
+            price: productPrice
+        };
+    
+        fetch(document.querySelector('.normal').getAttribute('data-url'), {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(productData),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.isNotLogged) {
+
+                location.href = '/project%20final%20de%20poles/Sign_In/signIn';
+                alert('You need to create an account to add products to the basket.')
+
+            }else {
+                // Change basket icon's styles that are clicked by user
+                document.querySelectorAll('div.icon-container').forEach(icon => updateBasketItemConfirmation(icon));
+                const basketIcon = document.querySelector('#lg-bag a');
+                basketIcon.setAttribute('data-count', data.count);
+            };
+        })
+        .catch(error => console.error('Error:', error));
+    });
+    
     
 
 });
