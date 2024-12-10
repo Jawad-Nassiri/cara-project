@@ -6,6 +6,7 @@
             justify-content: space-between; 
             margin-top: 20px;
             flex-wrap: wrap; 
+            position: relative;
         }
 
         #prodetails .single-pro-image {
@@ -21,6 +22,71 @@
         #prodetails .single-pro-details {
             width: 55%;
             padding-top: 30px;
+        }
+
+        .add-confirmation {
+            width: 300px;
+            height: 90px;
+            background-color: #f1f1f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            border-bottom: 3px solid #088178;
+            padding: 15px 15px 15px 20px;
+            position: absolute;
+            top: -15px;
+            transition: all 0.5s ease;
+        }
+        .add-confirmation .icon {
+            width: 15%; 
+        }
+
+        .add-confirmation .icon i {
+            color: #fff;
+            padding: 10px;
+            background: #088178;
+            border-radius: 50%;
+        }
+
+        .add-confirmation .confirmation-message {
+            width: 85%;
+        }
+
+        /* Alert Message */
+
+        .add-alert {
+            width: 300px;
+            height: 90px;
+            background-color: #f1f1f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            border-bottom: 3px solid red;
+            padding: 15px 15px 15px 20px;
+            position: absolute;
+            top: -15px;
+            transition: all 0.5s ease;
+        }
+        .add-alert .icon {
+            width: 15%; 
+            /* display: flex;
+            align-items: center;
+            justify-content: center; */
+        }
+
+        .add-alert .icon i {
+            color: #fff;
+            padding: 10px;
+            background: red;
+            border-radius: 50%;
+            /* width: 30px; */
+            /* height: 30px; */
+        }
+
+        .add-alert .alert-message {
+            width: 85%;
         }
 
         #prodetails .single-pro-details h6 {
@@ -141,11 +207,18 @@
     </style>
 
 <section id="prodetails" class="section-p1">
+    
+    <!-- <div class="add-alert">
+        <div class="alert-message">Product Is Already In Basket</div>
+        <div class="icon"><i class="fa-solid fa-xmark"></i></div>
+    </div> -->
     <div class="single-pro-image">
-        <img src="/project%20final%20de%20poles/public/assets/images/products/<?= htmlspecialchars($product->getPhoto()); ?>" id="main-image" alt="t-shirt">
+        <img src="/project%20final%20de%20poles/public/assets/images/products/<?= htmlspecialchars($product->getPhoto()); ?>" id="main-image" alt="t-shirt">  
     </div>
     
     <div class="single-pro-details">
+
+
         <h6>Shop / <?= htmlspecialchars($product->getCategorie()); ?></h6>
         <h4><?= htmlspecialchars($product->getTitre()); ?></h4>
         <h2><?= htmlspecialchars($product->getPrix()); ?>€</h2>
@@ -163,3 +236,10 @@
         <span><?= htmlspecialchars($product->getDescription()); ?></span>
     </div>
 </section>
+
+
+
+
+<!-- <i class="fa-regular fa-circle-xmark"></i> -->
+
+

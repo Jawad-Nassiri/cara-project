@@ -105,7 +105,7 @@
 <!-- Add user form  -->
 
 
-<form method="post" action="<?= addLink('AdminAddUser','addUser') ?>" class="user-form">
+<form method="post" action="<?= addLink('AdminAddProduct','editUserAccount') ?>" class="user-form">
         <div class="input-group">
             <h1 class="all-product">Create User Account</h1>
             <label for="username" class="input-label">Username:</label>
@@ -132,4 +132,38 @@
     
         <button type="submit" class="submit-btn" name="submit">Add User</button>
     </form>
+
+
+
 <!-- All users list  -->
+
+<?php if (isset($users) && count($users) > 0): ?>
+    <h1 class="all-users">All Users</h1>
+    <div class="table-wrapper admin-user-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Admin Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($users as $user): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($user['username']); ?></td>
+                        <td><?php echo htmlspecialchars($user['email']); ?></td>
+                        <td><?php echo $user['statut_admin'] ? 'Admin' : 'User'; ?></td>
+                        <td>
+                            <button class="edit-user-btn" data-id="<?= $user['id']; ?>">Edit</button>
+                            <button class="delete-user-btn" data-id="<?= $user['id']; ?>">Delete</button>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+<?php else: ?>
+    <p>No users available.</p>
+<?php endif; ?>

@@ -1291,7 +1291,6 @@ form {
     border: 1px solid #ccc;
 }
 
-/* Form Groups Styling */
 .input-group {
     margin-bottom: 20px;
 }
@@ -1344,10 +1343,10 @@ form {
     background-color: #062927;
 }
 
-/* Media Queries for responsiveness */
+
 @media (max-width: 768px) {
     .user-form {
-        width: 80%; /* 80% width on tablets */
+        width: 80%;
         padding: 15px;
     }
 
@@ -1363,6 +1362,158 @@ form {
         font-size: 14px;
     }
 }
+
+
+/* Admin user list  */
+
+.list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 400px;
+    height: 100px;
+    margin-left: 50px;
+}
+
+.list a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #088178;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.list a:hover {
+    background-color: #fff;
+    color: #088178;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    border: 2px solid #088178;
+    font-weight: 600;
+}
+
+.list a.active {
+    background-color: #fff;
+    color: #088178;
+    border: 2px solid #088178;
+    font-weight: 500;
+}
+
+.admin-user-table {
+    margin: 50px auto 200px;
+    max-width: 90%;
+    border: 2px solid #ddd;
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 500px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.all-users {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.admin-user-table table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.admin-user-table thead {
+    position: sticky;
+    top: 0;
+    background-color: #f4f4f4;
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.1);
+}
+
+.admin-user-table thead tr {
+    border-top: 2px solid #ddd;
+    border-bottom: 2px solid #ddd;
+}
+
+.admin-user-table th,
+.admin-user-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+.admin-user-table tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.admin-user-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.admin-user-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.admin-user-table td button {
+    width: 120px;
+    display: block;
+    margin-top: 5px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    color: white;
+    flex: 1;
+}
+
+.admin-user-table td .edit-user-btn {
+    background-color: #088178;
+}
+
+.admin-user-table td .edit-user-btn:hover {
+    background-color: #06665f;
+}
+
+.admin-user-table td .delete-user-btn {
+    background-color: red;
+}
+
+.admin-user-table td .delete-user-btn:hover {
+    background-color: darkred;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .admin-user-table table,
+    .admin-product-table table {
+        font-size: 12px;
+    }
+
+    .admin-user-table td,
+    .admin-product-table td,
+    .admin-user-table th,
+    .admin-product-table th {
+        padding: 8px 10px;
+    }
+
+    .admin-user-table,
+    .admin-product-table {
+        max-width: 100%;
+        margin: 20px;
+        overflow-x: scroll;
+    }
+
+    .admin-user-table td button,
+    .admin-product-table td button {
+        width: 100%;
+    }
+}
+
 
 
 
@@ -2110,6 +2261,10 @@ footer .copyright{
     }
 
     /* Admin Table  */
+
+    .list {
+        width: 300px;
+    }
 
     .admin-product-table table {
         display: block;

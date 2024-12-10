@@ -194,6 +194,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+
+    // Removing the user from the admin list when the admin click on the delete button
+    document.querySelectorAll('.delete-user-btn').forEach(function(button) {
+        button.addEventListener('click', function() {
+            const userId = button.getAttribute('data-id');
+        
+            if (confirm('Are you sure you want to delete this user?')) {
+                const formData = new FormData();
+                formData.append('id', userId);
+
+                fetch(`/project%20final%20de%20poles/adminAddProduct/deleteUser/${userId}`, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        button.closest('tr').remove();
+                    } else {
+                        alert('Error deleting user: ' + data.message);
+                    }
+                })
+                .catch(() => {
+                alert('An error occurred while deleting the user.');
+            });
+            }
+        });
+    });
+
     
 
     // Edit the product from the admin list when the admin click on the edit button
@@ -205,7 +234,32 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
 
-
+    // Edit User account from the admin list when the admin click on the edit button
+    document.querySelectorAll('.edit-user-btn').forEach(function(button) {
+        button.addEventListener('click', function() {
+            const userId = button.getAttribute('data-id');
+            
+            
+            fetch(`/project%20final%20de%20poles/AdminAddProduct/editUserAccount/${userId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const user = data.user;
+                        document.querySelector('#username').value = user.username;
+                        document.querySelector('#email').value = user.email;
+                        document.querySelector('#statut_admin').checked = user.statut_admin;
+                        document.querySelector('#userId').value = user.id;
+                        document.querySelector('#editUserForm').style.display = 'block';
+                    } else {
+                        alert('Error fetching user data: ' + data.message);
+                    }
+                })
+                .catch(() => {
+                    alert('An error occurred while fetching the user data.');
+                });
+        });
+    });
+    
 
     // Function to update the subtotal and the total amount in the basket
     function updateCart() {
@@ -251,8 +305,8 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCart();
 
 
-    ///////////////////////////////////////////////////
 
+    // Add a product from the details page 
     document.querySelector('button.normal').addEventListener('click', () => {
         const productId = document.querySelector('.normal').getAttribute('data-product-id');
         const productSize = document.querySelector('#product-size').value;
@@ -280,20 +334,42 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             if(data.isNotLogged) {
-
                 location.href = '/project%20final%20de%20poles/Sign_In/signIn';
-                alert('You need to create an account to add products to the basket.')
-
-            }else {
-                // Change basket icon's styles that are clicked by user
+                alert('You need to create an account to add products to the basket.');
+            } else {
                 document.querySelectorAll('div.icon-container').forEach(icon => updateBasketItemConfirmation(icon));
                 const basketIcon = document.querySelector('#lg-bag a');
                 basketIcon.setAttribute('data-count', data.count);
-            };
+    
+                // Show either the confirmation or the alert based on product existence
+                const messageHTML = data.productExists 
+                    ? `
+                        <div class="add-alert">
+                            <div class="alert-message">Product Is Already In Basket</div>
+                            <div class="icon"><i class="fa-solid fa-xmark"></i></div>
+                        </div>
+                    `
+                    : `
+                        <div class="add-confirmation">
+                            <div class="confirmation-message">Product Added Successfully</div>
+                            <div class="icon"><i class="fa-solid fa-check"></i></div>
+                        </div>
+                    `;
+    
+                document.querySelector('section#prodetails').insertAdjacentHTML('afterbegin', messageHTML);
+    
+                const confirmationElement = document.querySelector('.add-confirmation');
+                const alertElement = document.querySelector('.add-alert');
+    
+                setTimeout(() => {
+                    if (confirmationElement) confirmationElement.style.display = 'none';
+                    if (alertElement) alertElement.style.display = 'none';
+                }, 3000);
+            }
         })
         .catch(error => console.error('Error:', error));
     });
     
-    
+
 
 });

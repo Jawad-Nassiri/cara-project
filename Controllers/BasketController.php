@@ -48,7 +48,11 @@ class BasketController extends BaseController {
 
             $_SESSION['basket_count'] = count($_SESSION['basket']);
 
-            echo json_encode(['message' => 'Product added to basket', 'count' => $_SESSION['basket_count']]);
+            echo json_encode([
+                'message' => $productExists ? 'Product is already in the basket' : 'Product added to basket',
+                'count' => $_SESSION['basket_count'],
+                'productExists' => $productExists
+            ]);
         }else {
             echo json_encode(['message' => 'Invalid product data']);
         }

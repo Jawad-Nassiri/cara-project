@@ -179,13 +179,6 @@ select, input[type="number"] {
                         <td><?= $item['name']; ?></td>
                         <td class="price"><?= $item['price']; ?>€</td>
                         <td>
-                            <!-- <select class="item-size">
-                                <option value="small" selected>Small</option>
-                                <option value="medium">Medium</option>
-                                <option value="large">Large</option>
-                                <option value="x-large">X-Large</option>
-                            </select> -->
-
                             <select class="item-size" data-product-id="<?= $item['id']; ?>">
                                 <option value="small" <?= ($item['size'] == 'small') ? 'selected' : ''; ?>>Small</option>
                                 <option value="medium" <?= ($item['size'] == 'medium') ? 'selected' : ''; ?>>Medium</option>

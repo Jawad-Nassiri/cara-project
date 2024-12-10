@@ -5,21 +5,23 @@ namespace Controllers;
 use Models\entity\Product;
 use Models\repository\AdminRepository;
 use Form\ProductHandleRequest;
+use Models\repository\Sign_InRepository;
 
-class AdminAddProductController extends BaseController
-{
+class AdminAddProductController extends BaseController {
     private $adminRepo;
 
     public function __construct()
     {
         $this->adminRepo = new AdminRepository();
     }
-    public function showAddProductForm()
-    {
+    
+    public function showAddProductForm(){
         $this->checkAdminAccess();
         $products = $this->showAllProducts();
+        $users = (new Sign_InRepository())->getAllUsers();  // Fetch users
         return $this->render('admin-add-product.html.php', [
             'products' => $products,
+            'users' => $users,  // Pass users to the view
         ]);
     }
 
@@ -129,7 +131,7 @@ class AdminAddProductController extends BaseController
     }
 
 
-    // Editing the product from the admin list when the admin click on the delete edit
+    // Editing the product from the admin list when the admin click on the  edit btn
     public function editProduct($id) {
         $this->checkAdminAccess();
     
@@ -164,7 +166,7 @@ class AdminAddProductController extends BaseController
                         }
                     }
     
-                    // If there are no errors, update the product
+                    
                     if ($handler->isValid()) {
                         $isProductUpdated = $this->adminRepo->editProductForAdmin(
                             $product->getId(),
@@ -188,7 +190,6 @@ class AdminAddProductController extends BaseController
                 }
             }
     
-            // Render the product edit form with any errors
             return $this->render('admin-edit-product.html.php', [
                 'product' => $product,
                 'errors' => $handler->getErrorsForm() ?? [],
@@ -197,6 +198,49 @@ class AdminAddProductController extends BaseController
             echo "Product not found.";
         }
     }
-    
+
+
+    // Delete a User From The User List By Admin  
+    public function deleteUser(){
+
+        if (isset($_POST['id'])) {
+            // (int) is a type cast in PHP. It converts the value of $_POST['id'] to an integer 
+            $userId = (int) $_POST['id'];
+            
+            $userRepo = new Sign_InRepository();
+            
+            $isDeleted = $userRepo->deleteUserById($userId);
+            
+            if ($isDeleted) {
+                echo json_encode(['success' => true]);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Error deleting user']);
+            }
+        } else {
+            echo json_encode(['success' => false, 'message' => 'User ID not provided']);
+        }
+    }
+
+    // Editing the user account from the admin list when the admin click on the  edit btn
+    public function editUserAccount($userId) {
+        $userId = (int) $userId;
+
+        $userRepo = new Sign_InRepository();
+
+        $user = $userRepo->getUserById($userId);
+
+        if ($user) {
+            echo json_encode([
+                'success' => true,
+                'user' => $user
+            ]);
+        } else {
+            echo json_encode([
+                'success' => false,
+                'message' => 'User not found'
+            ]);
+        }
+    }
+
     
 }

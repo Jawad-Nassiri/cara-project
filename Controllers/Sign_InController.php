@@ -22,7 +22,6 @@ class Sign_InController extends BaseController
 
             $_SESSION['username'] = $user['username'];
             $_SESSION['statut_admin'] = $user['statut_admin'];
-            // header("Location: /project%20final%20de%20poles/product/index");
 
             if ($_SESSION['statut_admin'] == 1) {
                 header("Location: /project%20final%20de%20poles/product/index");
