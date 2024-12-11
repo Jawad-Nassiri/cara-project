@@ -102,8 +102,7 @@
 
 
 
-<!-- Add user form  -->
-
+<!-- Add user account form  -->
 
 <form method="post" action="<?= addLink('AdminAddProduct','editUserAccount') ?>" class="user-form">
         <div class="input-group">
@@ -136,7 +135,6 @@
 
 
 <!-- All users list  -->
-
 <?php if (isset($users) && count($users) > 0): ?>
     <h1 class="all-users">All Users</h1>
     <div class="table-wrapper admin-user-table">

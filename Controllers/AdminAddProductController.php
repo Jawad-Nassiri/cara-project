@@ -135,7 +135,6 @@ class AdminAddProductController extends BaseController {
     public function editProduct($id) {
         $this->checkAdminAccess();
     
-        // Fetch the product by its ID
         $product = $this->adminRepo->getProductByIdForAdmin($id);
     
         if ($product) {
@@ -224,23 +223,47 @@ class AdminAddProductController extends BaseController {
     // Editing the user account from the admin list when the admin click on the  edit btn
     public function editUserAccount($userId) {
         $userId = (int) $userId;
-
+        var_dump($_POST);
+        exit();
+    
         $userRepo = new Sign_InRepository();
-
+    
+        // Get user data by ID for pre-filling the form
         $user = $userRepo->getUserById($userId);
-
+    
         if ($user) {
-            echo json_encode([
-                'success' => true,
+            // Check if the form was submitted for updating the user
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                // Get the updated values from the form
+                $username = $_POST['username'];
+                $email = $_POST['email'];
+                $statutAdmin = $_POST['statut_admin'];
+    
+                // Call the update method
+                $updateSuccess = $userRepo->updateUserById($userId, $username, $email, $statutAdmin);
+    
+                // Check if update was successful
+                if ($updateSuccess) {
+                    // Redirect or show a success message
+                    echo "User updated successfully!";
+                    // Optionally, redirect to another page, for example:
+                    // header("Location: /path/to/redirect");
+                    exit;
+                } else {
+                    echo "Error updating user.";
+                }
+            }
+    
+            // Render the form with the current user data
+            return $this->render('AdminEditUserAccount.html.php', [
                 'user' => $user
             ]);
         } else {
-            echo json_encode([
-                'success' => false,
-                'message' => 'User not found'
-            ]);
+            echo "User not found.";
         }
     }
+    
+    
 
     
 }

@@ -238,27 +238,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.edit-user-btn').forEach(function(button) {
         button.addEventListener('click', function() {
             const userId = button.getAttribute('data-id');
-            
-            
-            fetch(`/project%20final%20de%20poles/AdminAddProduct/editUserAccount/${userId}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        const user = data.user;
-                        document.querySelector('#username').value = user.username;
-                        document.querySelector('#email').value = user.email;
-                        document.querySelector('#statut_admin').checked = user.statut_admin;
-                        document.querySelector('#userId').value = user.id;
-                        document.querySelector('#editUserForm').style.display = 'block';
-                    } else {
-                        alert('Error fetching user data: ' + data.message);
-                    }
-                })
-                .catch(() => {
-                    alert('An error occurred while fetching the user data.');
-                });
+            location.href = `/project%20final%20de%20poles/AdminAddProduct/editUserAccount?userId=${userId}`;
         });
     });
+    
+    
+    
     
 
     // Function to update the subtotal and the total amount in the basket
