@@ -104,7 +104,7 @@
 
 <!-- Add user account form  -->
 
-<form method="post" action="<?= addLink('AdminAddProduct','editUserAccount') ?>" class="user-form">
+<form method="post" action="<?= addLink('AdminAddUserAccount','addUserForm') ?>" class="user-form">
         <div class="input-group">
             <h1 class="all-product">Create User Account</h1>
             <label for="username" class="input-label">Username:</label>
@@ -122,8 +122,8 @@
         </div>
     
         <div class="input-group" id="user-list">
-            <label for="statut_admin" class="input-label">Admin Status:</label>
-            <select id="statut_admin" name="statut_admin" class="input-select">
+            <label for="status_admin" class="input-label">Admin Status:</label>
+            <select id="status_admin" name="status_admin" class="input-select">
                 <option value="0">No</option>
                 <option value="1">Yes</option>
             </select>
@@ -135,6 +135,7 @@
 
 
 <!-- All users list  -->
+
 <?php if (isset($users) && count($users) > 0): ?>
     <h1 class="all-users">All Users</h1>
     <div class="table-wrapper admin-user-table">
@@ -143,7 +144,7 @@
                 <tr>
                     <th>Username</th>
                     <th>Email</th>
-                    <th>Admin Status</th>
+                    <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>

@@ -1191,7 +1191,7 @@ form {
 
 .admin-product-table {
     margin: 50px auto 200px;
-    max-width: 90%;
+    max-width: 50%;
     border: 2px solid #ddd;
     overflow-x: auto;
     overflow-y: auto;
@@ -1404,7 +1404,7 @@ form {
 
 .admin-user-table {
     margin: 50px auto 200px;
-    max-width: 90%;
+    max-width: 50%;
     border: 2px solid #ddd;
     overflow-x: auto;
     overflow-y: auto;
@@ -1438,11 +1438,16 @@ form {
     border-bottom: 2px solid #ddd;
 }
 
-.admin-user-table th,
+.admin-user-table th {
+    padding: 12px 15px;   
+    border: 1px solid #ddd;
+}
+
+
 .admin-user-table td {
-    padding: 12px 15px;
     border: 1px solid #ddd;
     box-sizing: border-box;
+    text-align: center;
 }
 
 .admin-user-table tbody tr {
@@ -1473,6 +1478,7 @@ form {
 
 .admin-user-table td .edit-user-btn {
     background-color: #088178;
+    margin: 3px auto;
 }
 
 .admin-user-table td .edit-user-btn:hover {
@@ -1481,6 +1487,7 @@ form {
 
 .admin-user-table td .delete-user-btn {
     background-color: red;
+    margin: 3px auto;
 }
 
 .admin-user-table td .delete-user-btn:hover {

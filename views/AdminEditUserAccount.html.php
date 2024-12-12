@@ -3,7 +3,6 @@
     <div class="input-group">
         <h1 class="all-product">Edit User Account</h1>
         
-        <!-- Pre-fill form with current user data -->
         <label for="username" class="input-label">Username:</label>
         <input type="text" id="username" name="username" class="input-field" value="<?php echo htmlspecialchars($user['username']); ?>" required>
     </div>
@@ -15,8 +14,7 @@
 
     <div class="input-group">
         <label for="password" class="input-label">Password:</label>
-        <input type="password" id="password" name="password" class="input-field" disabled>
-        <!-- The password is disabled since it's not being updated here -->
+        <input type="password" id="password" name="password" class="input-field" value="<?php echo htmlspecialchars($user['password']); ?>" disabled>
     </div>
 
     <div class="input-group" id="user-list">

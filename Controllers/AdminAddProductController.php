@@ -222,39 +222,29 @@ class AdminAddProductController extends BaseController {
 
     // Editing the user account from the admin list when the admin click on the  edit btn
     public function editUserAccount($userId) {
-        $userId = (int) $userId;
-        var_dump($_POST);
-        exit();
+        $userId = (int) $_GET['userId'];
+        
     
         $userRepo = new Sign_InRepository();
-    
-        // Get user data by ID for pre-filling the form
+        
         $user = $userRepo->getUserById($userId);
     
         if ($user) {
-            // Check if the form was submitted for updating the user
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                // Get the updated values from the form
                 $username = $_POST['username'];
                 $email = $_POST['email'];
                 $statutAdmin = $_POST['statut_admin'];
     
-                // Call the update method
                 $updateSuccess = $userRepo->updateUserById($userId, $username, $email, $statutAdmin);
     
-                // Check if update was successful
                 if ($updateSuccess) {
-                    // Redirect or show a success message
-                    echo "User updated successfully!";
-                    // Optionally, redirect to another page, for example:
-                    // header("Location: /path/to/redirect");
+                    header('Location: /project%20final%20de%20poles/AdminAddProduct/showAddProductForm#user-list');
                     exit;
                 } else {
                     echo "Error updating user.";
                 }
             }
     
-            // Render the form with the current user data
             return $this->render('AdminEditUserAccount.html.php', [
                 'user' => $user
             ]);
@@ -262,8 +252,5 @@ class AdminAddProductController extends BaseController {
             echo "User not found.";
         }
     }
-    
-    
-
     
 }

@@ -168,34 +168,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // Removing the product from the admin list when the admin click on the delete button
+    // delete the product from the admin list when the admin click on the delete button
     
     document.querySelectorAll('button.delete-btn').forEach(deleteBtn => {
         deleteBtn.addEventListener('click', function (event) {
             const productId = this.getAttribute('data-id');
             const row = this.closest('tr');
-    
-            fetch(`/project%20final%20de%20poles/adminAddProduct/deleteProduct/${productId}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ id: productId }),
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    row.remove();
-                } else {
-                    alert('Error deleting product: ' + (data.message || 'Unknown error'));
-                }
-            })
-            .catch(error => console.error('Error:', error));
+            
+            if (confirm('Are you sure you want to delete this product?')) {
+                fetch(`/project%20final%20de%20poles/adminAddProduct/deleteProduct/${productId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ id: productId }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        row.remove();
+                    } else {
+                        alert('Error deleting product: ' + (data.message || 'Unknown error'));
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            }
+
         });
+        
     });
 
 
-    // Removing the user from the admin list when the admin click on the delete button
+    // delete the user from the admin list when the admin click on the delete button
     document.querySelectorAll('.delete-user-btn').forEach(function(button) {
         button.addEventListener('click', function() {
             const userId = button.getAttribute('data-id');
@@ -232,6 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
             location.href = `/project%20final%20de%20poles/AdminAddProduct/editProduct/${productId}`;
         })
     })
+
 
 
     // Edit User account from the admin list when the admin click on the edit button
