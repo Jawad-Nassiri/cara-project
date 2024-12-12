@@ -2,6 +2,8 @@
 
 namespace Controllers;
 use Controllers\BaseController;
+use Models\entity\Commande;
+use Models\repository\CommandeRepository;
 class BasketController extends BaseController {
 
     public function addToBasket() {
@@ -82,7 +84,6 @@ class BasketController extends BaseController {
         }
 
     
-    // Basket Page Method
     public function basket() {
         $basket = isset($_SESSION['basket']) ? $_SESSION['basket'] : [];
 

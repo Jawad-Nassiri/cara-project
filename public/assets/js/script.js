@@ -221,8 +221,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 })
                 .catch(() => {
-                alert('An error occurred while deleting the user.');
-            });
+                    alert('An error occurred while deleting the user.');
+                });
             }
         });
     });
@@ -295,71 +295,120 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCart();
 
 
+        // retrieve the data from the basket and set them in the command table 
+        document.getElementById("continue-btn").addEventListener("click", function() {
+            const basketItems = [];
+            
+            document.querySelectorAll("#cart tbody tr").forEach(function(row) {
+                const item = {
+                    id: row.getAttribute("data-product-id"),
+                    name: row.querySelector("td:nth-child(3)").textContent.trim(),
+                    price: row.querySelector(".price").textContent.replace('€', '').trim(),
+                    size: row.querySelector(".item-size").value,
+                    quantity: row.querySelector(".item-quantity").value
+                };
+                basketItems.push(item);
+            });
+    
+        
+            fetch('/project%20final%20de%20poles/Commande/saveBasket', {
+
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ basket: basketItems })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.text().then(text => {
+                        console.error("Server returned an error:", text);
+                        throw new Error("Server error: " + text);
+                    });
+                }
+                return response.json(); 
+            })
+            .then(response => response.json())
+                .then(data => {
+                    if(data) {
+                        console.log(data)
+                    }else {
+                        alert('Error getting data');
+                    }
+                })
+                .catch(() => {
+                    alert('An error occurred while getting the data.');
+                });
+            
+        });
+
+
+
 
     // Add a product from the details page 
-    document.querySelector('button.normal').addEventListener('click', () => {
-        const productId = document.querySelector('.normal').getAttribute('data-product-id');
-        const productSize = document.querySelector('#product-size').value;
-        const productQuantity = document.querySelector('input[type="number"]').value;
-        const productPhoto = document.querySelector('#main-image').getAttribute('src');
-        const productName = document.querySelector('h4').textContent;
-        const productPrice = document.querySelector('h2').textContent.replace('€', '');
+    // document.querySelector('button.normal').addEventListener('click', () => {
+    //     const productId = document.querySelector('.normal').getAttribute('data-product-id');
+    //     const productSize = document.querySelector('#product-size').value;
+    //     const productQuantity = document.querySelector('input[type="number"]').value;
+    //     const productPhoto = document.querySelector('#main-image').getAttribute('src');
+    //     const productName = document.querySelector('h4').textContent;
+    //     const productPrice = document.querySelector('h2').textContent.replace('€', '');
     
-        const productData = {
-            id: productId,
-            size: productSize,
-            quantity: productQuantity,
-            photo: productPhoto,
-            name: productName,
-            price: productPrice
-        };
+    //     const productData = {
+    //         id: productId,
+    //         size: productSize,
+    //         quantity: productQuantity,
+    //         photo: productPhoto,
+    //         name: productName,
+    //         price: productPrice
+    //     };
     
-        fetch(document.querySelector('.normal').getAttribute('data-url'), {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(productData),
-        })
-        .then(response => response.json())
-        .then(data => {
-            if(data.isNotLogged) {
-                location.href = '/project%20final%20de%20poles/Sign_In/signIn';
-                alert('You need to create an account to add products to the basket.');
-            } else {
-                document.querySelectorAll('div.icon-container').forEach(icon => updateBasketItemConfirmation(icon));
-                const basketIcon = document.querySelector('#lg-bag a');
-                basketIcon.setAttribute('data-count', data.count);
+    //     fetch(document.querySelector('.normal').getAttribute('data-url'), {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify(productData),
+    //     })
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         if(data.isNotLogged) {
+    //             location.href = '/project%20final%20de%20poles/Sign_In/signIn';
+    //             alert('You need to create an account to add products to the basket.');
+    //         } else {
+    //             document.querySelectorAll('div.icon-container').forEach(icon => updateBasketItemConfirmation(icon));
+    //             const basketIcon = document.querySelector('#lg-bag a');
+    //             basketIcon.setAttribute('data-count', data.count);
     
-                // Show either the confirmation or the alert based on product existence
-                const messageHTML = data.productExists 
-                    ? `
-                        <div class="add-alert">
-                            <div class="alert-message">Product Is Already In Basket</div>
-                            <div class="icon"><i class="fa-solid fa-xmark"></i></div>
-                        </div>
-                    `
-                    : `
-                        <div class="add-confirmation">
-                            <div class="confirmation-message">Product Added Successfully</div>
-                            <div class="icon"><i class="fa-solid fa-check"></i></div>
-                        </div>
-                    `;
+    //             // Show either the confirmation or the alert based on product existence
+    //             const messageHTML = data.productExists 
+    //                 ? `
+    //                     <div class="add-alert">
+    //                         <div class="alert-message">Product Is Already In Basket</div>
+    //                         <div class="icon"><i class="fa-solid fa-xmark"></i></div>
+    //                     </div>
+    //                 `
+    //                 : `
+    //                     <div class="add-confirmation">
+    //                         <div class="confirmation-message">Product Added Successfully</div>
+    //                         <div class="icon"><i class="fa-solid fa-check"></i></div>
+    //                     </div>
+    //                 `;
     
-                document.querySelector('section#prodetails').insertAdjacentHTML('afterbegin', messageHTML);
+    //             document.querySelector('section#prodetails').insertAdjacentHTML('afterbegin', messageHTML);
     
-                const confirmationElement = document.querySelector('.add-confirmation');
-                const alertElement = document.querySelector('.add-alert');
+    //             const confirmationElement = document.querySelector('.add-confirmation');
+    //             const alertElement = document.querySelector('.add-alert');
     
-                setTimeout(() => {
-                    if (confirmationElement) confirmationElement.style.display = 'none';
-                    if (alertElement) alertElement.style.display = 'none';
-                }, 3000);
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    });
+    //             setTimeout(() => {
+    //                 if (confirmationElement) confirmationElement.style.display = 'none';
+    //                 if (alertElement) alertElement.style.display = 'none';
+    //             }, 3000);
+    //         }
+    //     })
+    //     .catch(error => console.error('Error:', error));
+    // });
     
-
-
+    
+    
 });

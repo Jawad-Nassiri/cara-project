@@ -20,6 +20,7 @@ class Sign_InController extends BaseController
 
         if($user){
 
+            $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['statut_admin'] = $user['statut_admin'];
 

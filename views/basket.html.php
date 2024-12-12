@@ -136,9 +136,7 @@ select, input[type="number"] {
     font-size: 13px;
 }
 
-#subtotal a {
-    text-decoration: none;
-    display: block;
+#subtotal button {
     color: #fff;
     background: #088178;
     width: 120px;
@@ -146,6 +144,9 @@ select, input[type="number"] {
     border-radius: 4px;
     font-size: 16px;
     text-align: center;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
 }
 
 
@@ -208,6 +209,6 @@ select, input[type="number"] {
                 <td id="total-amount"><strong>0€</strong></td>
             </tr>
         </table>
-        <a href="#">Continue</a>
+        <button id="continue-btn">Continue</button>
     </div>
 </section>
