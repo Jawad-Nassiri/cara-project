@@ -215,7 +215,7 @@ select, input[type="number"] {
 
 
 <script>
-    const data = <?php echo json_encode($_SESSION['cartData'] ?? []); ?>
+    const data = <?php echo json_encode($_SESSION['user_id'] ?? []); ?>
 
     console.log(data)
 </script>
