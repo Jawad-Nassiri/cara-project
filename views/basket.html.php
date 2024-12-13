@@ -212,3 +212,10 @@ select, input[type="number"] {
         <button id="continue-btn">Continue</button>
     </div>
 </section>
+
+
+<script>
+    const data = <?php echo json_encode($_SESSION['cartData'] ?? []); ?>
+
+    console.log(data)
+</script>

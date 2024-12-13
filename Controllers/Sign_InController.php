@@ -19,8 +19,7 @@ class Sign_InController extends BaseController
         $user = $this->signInRequest->handleSignInRequest();
 
         if($user){
-
-            $_SESSION['user_id'] = $user['user_id'];
+            $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['statut_admin'] = $user['statut_admin'];
 

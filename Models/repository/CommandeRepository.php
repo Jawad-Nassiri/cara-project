@@ -12,32 +12,24 @@ class CommandeRepository extends BaseRepository {
             $sql = "INSERT INTO commande (montant, size, date_enregistrement, id_membre, product_id) 
                     VALUES (:montant, :size, :date_enregistrement, :id_membre, :product_id)";
             $stmt = $this->connection->prepare($sql);
-
-            $stmt->bindParam(':montant', $commande->getMontant());
-            $stmt->bindParam(':size', $commande->getSize());
-            $stmt->bindParam(':date_enregistrement', $commande->getDateEnregistrement());
-            $stmt->bindParam(':id_membre', $commande->getIdMembre());
-            $stmt->bindParam(':product_id', $commande->getProductId());
-
+    
+            $montant = $commande->getMontant();
+            $size = $commande->getSize();
+            $dateEnregistrement = $commande->getDateEnregistrement();
+            $idMembre = $commande->getIdMembre();
+            $productId = $commande->getProductId();
+    
+            $stmt->bindParam(':montant', $montant);
+            $stmt->bindParam(':size', $size);
+            $stmt->bindParam(':date_enregistrement', $dateEnregistrement);
+            $stmt->bindParam(':id_membre', $idMembre);
+            $stmt->bindParam(':product_id', $productId);
+    
             return $stmt->execute();
-
         } catch (PDOException $e) {
             echo "Error saving command: " . $e->getMessage();
             return false;
         }
     }
-
-    // public function getCommandsByUser(int $userId): array {
-    //     try {
-    //         $sql = "SELECT * FROM commande WHERE id_membre = :id_membre";
-    //         $stmt = $this->connection->prepare($sql);
-    //         $stmt->bindParam(':id_membre', $userId);
-    //         $stmt->execute();
-
-    //         return $stmt->fetchAll();
-    //     } catch (PDOException $e) {
-    //         echo "Error retrieving commands: " . $e->getMessage();
-    //         return [];
-    //     }
-    // }
+    
 }

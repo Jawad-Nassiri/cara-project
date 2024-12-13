@@ -2,8 +2,8 @@
 
 namespace Controllers;
 use Controllers\BaseController;
-use Models\entity\Commande;
-use Models\repository\CommandeRepository;
+// use Models\entity\Commande;
+// use Models\repository\CommandeRepository;
 class BasketController extends BaseController {
 
     public function addToBasket() {
@@ -65,23 +65,25 @@ class BasketController extends BaseController {
         public function removeFromBasket() {
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $data = json_decode(file_get_contents('php://input'), true);
-    
-                if (isset($data['id']) && isset($_SESSION['basket'])) {
+        
+                if (isset($data['id'], $data['size']) && isset($_SESSION['basket'])) {
                     $productId = $data['id'];
-    
-                    $_SESSION['basket'] = array_filter($_SESSION['basket'], function($item) use ($productId) {
-                        return $item['id'] != $productId;
+                    $productSize = $data['size'];
+        
+                    $_SESSION['basket'] = array_filter($_SESSION['basket'], function($item) use ($productId, $productSize) {
+                        return !($item['id'] == $productId && $item['size'] == $productSize);
                     });
-    
+        
                     $_SESSION['basket'] = array_values($_SESSION['basket']);
                     $_SESSION['basket_count'] = count($_SESSION['basket']);
-    
+        
                     echo json_encode(['success' => true, 'message' => 'Product removed from basket', 'count' => $_SESSION['basket_count']]);
                 } else {
                     echo json_encode(['success' => false, 'message' => 'Product not found in basket']);
                 }
             }
         }
+        
 
     
     public function basket() {
