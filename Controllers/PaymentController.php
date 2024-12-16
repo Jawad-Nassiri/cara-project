@@ -8,18 +8,22 @@ use Models\repository\CommandeRepository;
 class PaymentController extends BaseController {
 
     public function processPayment() {
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            
             $cartData = $_SESSION['cartData'] ?? null;
             $idMembre = $_SESSION['user_id'] ?? null;
-            // d_die($idMembre);
-            
+
             if (!$cartData || !$idMembre) {
-                echo json_encode(['success' => false, 'message' => 'No cart data or user not logged in.']);
+                echo json_encode([
+                    'success' => false,
+                    'message' => 'Cart data or user ID missing. Please check your session.'
+                ]);
                 return;
             }
-            
+
             $repository = new CommandeRepository();
-            
+
             foreach ($cartData['cartData'] as $index => $item) {
                 if (!isset($item['productId'], $item['name'], $item['price'], $item['size'], $item['quantity'])) {
                     echo json_encode([
@@ -66,7 +70,6 @@ class PaymentController extends BaseController {
                 $commande->setIdMembre($idMembre);
                 $commande->setProductId($item['productId']);
 
-                // Save the command in the database
                 $success = $repository->saveCommand($commande);
                 if (!$success) {
                     echo json_encode([
@@ -77,7 +80,7 @@ class PaymentController extends BaseController {
                 }
             }
 
-            // unset($_SESSION['cartData']); 
+            unset($_SESSION['cartData']); 
 
             echo json_encode([
                 'success' => true,
@@ -86,5 +89,9 @@ class PaymentController extends BaseController {
         } else {
             echo json_encode(['success' => false, 'message' => 'Invalid request method.']);
         }
+    }
+
+    public function showPaymentPage() {
+        $this->render('paymentPage.html.php', []);
     }
 }

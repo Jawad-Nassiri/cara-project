@@ -1,13 +1,45 @@
 <style>
-
-
 .gradient-background {
   width: 100%;
   min-height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   background: linear-gradient(to right, #A1D8D8, #088178);
+  position: relative;
+  padding-top: 70px;
+}
+
+.add-confirmation {
+  width: 300px;
+  height: 90px;
+  background-color: #f1f1f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  border-bottom: 3px solid #088178;
+  padding: 15px 15px 15px 20px;
+  position: absolute;
+  top: 90px; 
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.add-confirmation .icon {
+  width: 15%;
+}
+
+.add-confirmation .icon i {
+  color: #fff;
+  padding: 10px;
+  background: #088178;
+  border-radius: 50%;
+}
+
+.add-confirmation .confirmation-message {
+  width: 85%;
 }
 
 .payment-container {
@@ -17,6 +49,7 @@
   border-radius: 5px;
   padding: 30px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  margin-top: 120px; /* Reduced gap between the add-confirmation and the payment-container */
 }
 
 .payment-container .payment-wrapper {
@@ -35,6 +68,7 @@
   display: block;
   font-weight: 500;
   margin-bottom: 5px;
+  text-align: left;
 }
 
 .payment-wrapper input {
@@ -92,7 +126,6 @@
   background: #065f58;
 }
 
-/* Responsive Design */
 @media screen and (max-width: 768px) {
   .payment-container {
     max-width: 90%;
@@ -108,9 +141,13 @@
     width: 50px;
   }
 }
-
 </style>
 
+
+              <!-- <div class="add-confirmation">
+                <div class="confirmation-message">Payment Successfully</div>
+                <div class="icon"><i class="fa-solid fa-check"></i></div>
+              </div> -->
 <div class="gradient-background">
     <div class="payment-container">
       <form action="/project%20final%20de%20poles/Payment/processPayment" method="post">
@@ -178,33 +215,41 @@
   </div>
 
 
-  
-  <script>
-  
-  if(location.pathname.includes('paymentPage.html.php')) {
+<script>
+    if(location.pathname.includes('showPaymentPage')) {
+    document.querySelector('.payment').addEventListener('click', function(event) {
+        event.preventDefault();
 
-    document.querySelector('.button.payment').addEventListener('click', function() {
-      fetch('/project%20final%20de%20poles/Payment/processPayment', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ action: 'processPayment' })
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data)
-        if (data.success) {
-          alert('success')
-            // location.href = '/project%20final%20de%20poles/views/successPage.html.php';
-        } else {
-            alert('Payment failed: ' + data.message);
-        }
-      })
-    .catch(error => console.error('Error:', error));
+        const cartData = <?php echo json_encode($_SESSION['cartData']); ?>;
+
+        const formData = new FormData();
+        formData.append('cartData', JSON.stringify(cartData));
+
+        fetch('/project%20final%20de%20poles/Payment/processPayment', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                document.body.insertAdjacentHTML(
+                    'afterbegin',
+                    `
+                    <div class="add-confirmation">
+                        <div class="confirmation-message">${data.message}</div>
+                        <div class="icon"><i class="fa-solid fa-check"></i></div>
+                    </div>
+                    `
+                  )
+                  
+            } else {
+                alert("Error: Something went wrong.");
+            }
+        })
+        .catch(error => {
+            console.error("Error submitting payment:", error);
+        });
     });
+}
 
-    
-    }
-        
-  </script>
+</script>

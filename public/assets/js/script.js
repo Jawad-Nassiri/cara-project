@@ -391,7 +391,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })  
             .then(data => {
                 if (data.success) {
-                    location.href = '/project%20final%20de%20poles/views/paymentPage.html.php';
+                    location.href = '/project%20final%20de%20poles/Payment/showPaymentPage';
                 } else {
                     alert('Error occurred while processing your cart data.');
                 }

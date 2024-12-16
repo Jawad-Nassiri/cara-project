@@ -171,7 +171,7 @@ select, input[type="number"] {
                 <th>Subtotal</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="product-tbody">
             <?php if (!empty($basket)): ?>   
                 <?php foreach ($basket as $item): ?>
                     <tr id="product-row" data-product-id="<?= $item['id']; ?>">
@@ -213,9 +213,3 @@ select, input[type="number"] {
     </div>
 </section>
 
-
-<script>
-    const data = <?php echo json_encode($_SESSION['user_id'] ?? []); ?>
-
-    console.log(data)
-</script>

@@ -18,8 +18,8 @@ class Sign_UpController extends BaseController
     {
         $this->sign_up = new Sign_Up;
     }
-    public function sign_UpForm()
-    {
+    public function sign_UpForm() {
+
         $formHandler = new SignUpHandleRequest();
         $formHandler->handleSignUpRequest($this->sign_up);
 
@@ -27,7 +27,7 @@ class Sign_UpController extends BaseController
             if ($formHandler->isValid()) {
                 $this->saveFormData($this->sign_up);
 
-                $_SESSION['username'] = $this->sign_up->getUsername();
+                // $_SESSION['username'] = $this->sign_up->getUsername();
                 
                 
                 header('Location: /project%20final%20de%20poles/product/index');
@@ -60,14 +60,11 @@ class Sign_UpController extends BaseController
 {
     $Sign_UpRepo = new Sign_UpRepository();
 
-    // Get the inserted ID
     $insertedId = $Sign_UpRepo->saveSign_UpForm($sign_up);
 
     if ($insertedId !== false) {
-        // Set the ID on the sign_up object
         $sign_up->setId((int)$insertedId);
 
-        // Set session variables
         $_SESSION['username'] = $sign_up->getUsername();
         $_SESSION['user_id'] = $sign_up->getId(); 
 
