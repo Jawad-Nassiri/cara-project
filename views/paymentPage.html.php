@@ -10,15 +10,13 @@
   padding-top: 70px;
 }
 
-.add-confirmation {
+.add-confirmation, .add-alert {
   width: 300px;
   height: 90px;
-  background-color: #f1f1f1;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 5px;
-  border-bottom: 3px solid #088178;
   padding: 15px 15px 15px 20px;
   position: absolute;
   top: 90px; 
@@ -27,18 +25,35 @@
   z-index: 10;
 }
 
-.add-confirmation .icon {
+.add-confirmation {
+  background-color: #f1f1f1;
+  border-bottom: 3px solid #088178;
+}
+
+.add-alert {
+  background-color: #fff;
+  border-bottom: 3px solid #d32f2f;
+}
+
+.add-confirmation .icon, .add-alert .icon {
   width: 15%;
 }
 
-.add-confirmation .icon i {
+.add-confirmation .icon i, .add-alert .icon i {
   color: #fff;
   padding: 10px;
-  background: #088178;
   border-radius: 50%;
 }
 
-.add-confirmation .confirmation-message {
+.add-confirmation .icon i {
+  background: #088178;
+}
+
+.add-alert .icon i {
+  background: #d32f2f;
+}
+
+.add-confirmation .confirmation-message, .add-alert .alert-message {
   width: 85%;
 }
 
@@ -49,7 +64,7 @@
   border-radius: 5px;
   padding: 30px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-  margin-top: 120px; /* Reduced gap between the add-confirmation and the payment-container */
+  margin-top: 120px;
 }
 
 .payment-container .payment-wrapper {
@@ -144,10 +159,6 @@
 </style>
 
 
-              <!-- <div class="add-confirmation">
-                <div class="confirmation-message">Payment Successfully</div>
-                <div class="icon"><i class="fa-solid fa-check"></i></div>
-              </div> -->
 <div class="gradient-background">
     <div class="payment-container">
       <form action="/project%20final%20de%20poles/Payment/processPayment" method="post">
@@ -215,41 +226,8 @@
   </div>
 
 
-<script>
-    if(location.pathname.includes('showPaymentPage')) {
-    document.querySelector('.payment').addEventListener('click', function(event) {
-        event.preventDefault();
-
-        const cartData = <?php echo json_encode($_SESSION['cartData']); ?>;
-
-        const formData = new FormData();
-        formData.append('cartData', JSON.stringify(cartData));
-
-        fetch('/project%20final%20de%20poles/Payment/processPayment', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                document.body.insertAdjacentHTML(
-                    'afterbegin',
-                    `
-                    <div class="add-confirmation">
-                        <div class="confirmation-message">${data.message}</div>
-                        <div class="icon"><i class="fa-solid fa-check"></i></div>
-                    </div>
-                    `
-                  )
-                  
-            } else {
-                alert("Error: Something went wrong.");
-            }
-        })
-        .catch(error => {
-            console.error("Error submitting payment:", error);
-        });
-    });
-}
-
+  <script>
+    let basketData = <?php echo json_encode($_SESSION['basket'] ?? []); ?>;
+    let basketCount= <?php echo json_encode($_SESSION['basket_count'] ?? []); ?>;
 </script>
+
