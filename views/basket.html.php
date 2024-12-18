@@ -149,6 +149,37 @@ select, input[type="number"] {
     cursor: pointer;
 }
 
+/* alert style  */
+.add-alert {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 300px;
+    height: 100px;
+    font-size: 16px;
+    z-index: 1000;
+}
+
+.add-alert .alert-message {
+    flex-grow: 1;
+    font-weight: bold;
+}
+
+.add-alert .icon {
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 8px 12px;
+    font-size: 20px;
+    cursor: pointer;
+}
 
 </style>
 
@@ -212,4 +243,8 @@ select, input[type="number"] {
         <button id="continue-btn">Continue</button>
     </div>
 </section>
+
+<script>
+    let basketCount = <?php echo json_encode($_SESSION['basket_count'] ?? []); ?>;
+</script>
 

@@ -224,10 +224,3 @@
       </form>
     </div>
   </div>
-
-
-  <script>
-    let basketData = <?php echo json_encode($_SESSION['basket'] ?? []); ?>;
-    let basketCount= <?php echo json_encode($_SESSION['basket_count'] ?? []); ?>;
-</script>
-

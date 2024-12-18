@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Onclick event for the basket icon 
         icon.addEventListener('click', () => {
 
-            // Add the product in the basket after the basket's icon is clicked 
+            // Add product in the basket after the basket's icon is clicked 
             const productId = icon.getAttribute("data-product-id")
             const url = icon.getAttribute('data-url')
             const productPhoto = icon.closest('.pro').querySelector('.pro .product-img').getAttribute('src')
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     
-        // Remove the product from the basket after the remove icon is clicked using AJAX
+        // remove product from the basket after the remove icon is clicked using AJAX
         document.querySelectorAll('i#remove-product').forEach(removeIcon => {
             removeIcon.addEventListener('click', (event) => {
                 const productId = event.target.getAttribute('data-id');
@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // delete the product from the admin list when the admin click on the delete button
+    // delete product from the admin list when the admin click on the delete button
     
     document.querySelectorAll('button.delete-btn').forEach(deleteBtn => {
         deleteBtn.addEventListener('click', function (event) {
@@ -364,66 +364,88 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // redirection to the payment page   
-    if(location.pathname.includes('Basket')) {
-        document.getElementById('continue-btn').addEventListener('click', function() {
-            location.href = '/project%20final%20de%20poles/Payment/showPaymentPage';
-        })   
-    }
-
-
-
-
-    if (location.pathname.includes('showPaymentPage')) {
-        document.querySelector('.payment').addEventListener('click', function (event) {
-            event.preventDefault();
-            basketCount = 0
-
-            
-
-            if (basketData.length === 0) {
-                alert("Your basket is empty. Please add products before proceeding to payment.");
-                return;
-            }
-
-            const formData = new FormData();
-            formData.append('basketData', JSON.stringify(basketData));
-
-            fetch('/project%20final%20de%20poles/Payment/processPayment', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                let alertElement = data.success ? 
-                `
-                    <div class="add-confirmation">
-                        <div class="confirmation-message">${data.message}</div>
-                        <div class="icon"><i class="fa-solid fa-check"></i></div>
-                    </div>
-                ` 
-                :
-                
-                `
-                    <div class="add-alert">
-                        <div class="alert-message">${data.message || 'Payment failed. Please try again!'}</div>
-                        <div class="icon"><i class="fa-solid fa-xmark"></i></div>
-                    </div>
-                `;
-
-                document.body.insertAdjacentHTML('afterbegin', alertElement);
-
-                setTimeout(() => {
-                    const alert = document.querySelector(data.success ? '.add-confirmation' : '.add-alert');
-                    if (alert) {
-                        alert.remove();
-                    }
-                }, 2000);
-            })
-            .catch(error => {
-                console.error("Error submitting payment:", error);
-                alert("An error occurred while processing your payment. Please try again later.");
+    // redirection to the payment page 
+    if (location.pathname.includes('Basket')) {
+        const continueBtn = document.getElementById('continue-btn');
+    
+        function updateBasketCount() {
+            return fetch('/project%20final%20de%20poles/Basket/getBasketCount', { method: 'GET' })
+                .then(response => response.json())
+                .then(data => {
+                    basketCount = data.basket_count;
+                })
+                .catch(error => console.error('Error fetching basket count:', error));
+        }
+    
+        continueBtn.addEventListener('click', function() {
+            updateBasketCount().then(() => {
+                if (basketCount !== 0) {
+                    location.href = '/project%20final%20de%20poles/Payment/showPaymentPage';
+                } else {
+                    document.body.insertAdjacentHTML('afterbegin', `
+                        <div class="add-alert">
+                            <div class="alert-message">Your Basket Is Empty</div>
+                            <div class="icon"><i class="fa-solid fa-xmark"></i></div>
+                        </div>
+                    `);
+    
+                    setTimeout(() => document.querySelector('.add-alert')?.remove(), 2000);
+                }
             });
         });
     }
+    
+    
+    
+
+
+
+    // payment process
+    if (location.pathname.includes('showPaymentPage')) {
+        document.querySelector('button.payment').addEventListener('click', function (event) {
+            event.preventDefault();
+    
+            fetch('/project%20final%20de%20poles/Payment/processPayment', {
+                method: 'POST',
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.body.insertAdjacentHTML('afterbegin', `
+                        <div class="add-confirmation">
+                            <div class="confirmation-message">Payment processed successfully!</div>
+                            <div class="icon"><i class="fa-solid fa-check"></i></div>
+                        </div>
+                    `);
+
+                    updateBasketCount();
+
+                    setTimeout(() => {
+                        location.href = '/project%20final%20de%20poles/product/index';
+                    }, 2000);
+    
+                } else {
+                    console.error('Payment processing failed:', data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error processing payment:', error);
+            });
+        });
+    }
+    
+    function updateBasketCount() {
+        fetch('/project%20final%20de%20poles/Basket/getBasketCount', { method: 'GET' })
+            .then(response => response.json())
+            .then(data => {
+                if (data.basket_count !== undefined) {
+                    const basketIcon = document.querySelector('#lg-bag a');
+                    basketIcon.setAttribute('data-count', data.basket_count);
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching basket count:', error);
+            });
+    }
+    
 });

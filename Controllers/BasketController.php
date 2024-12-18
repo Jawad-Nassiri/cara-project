@@ -82,9 +82,17 @@ class BasketController extends BaseController {
                 }
             }
         }
+
+        
+        // basket count handling 
+        public function getBasketCount() {
+            echo json_encode([
+                'basket_count' => $_SESSION['basket_count'] ?? 0
+            ]);
+            exit;
+        }
         
 
-    
     public function basket() {
         $basket = isset($_SESSION['basket']) ? $_SESSION['basket'] : [];
 
