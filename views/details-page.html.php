@@ -55,7 +55,7 @@
 
         /* Alert Message */
 
-        .add-alert {
+        .add-alert-message {
             width: 300px;
             height: 90px;
             background-color: #f1f1f1;
@@ -69,23 +69,18 @@
             top: -15px;
             transition: all 0.5s ease;
         }
-        .add-alert .icon {
+        .add-alert-message .icon {
             width: 15%; 
-            /* display: flex;
-            align-items: center;
-            justify-content: center; */
         }
 
-        .add-alert .icon i {
+        .add-alert-message .icon i {
             color: #fff;
             padding: 10px;
             background: red;
             border-radius: 50%;
-            /* width: 30px; */
-            /* height: 30px; */
         }
 
-        .add-alert .alert-message {
+        .add-alert-message .alert-message {
             width: 85%;
         }
 
@@ -207,11 +202,6 @@
     </style>
 
 <section id="prodetails" class="section-p1">
-    
-    <!-- <div class="add-alert">
-        <div class="alert-message">Product Is Already In Basket</div>
-        <div class="icon"><i class="fa-solid fa-xmark"></i></div>
-    </div> -->
     <div class="single-pro-image">
         <img src="/project%20final%20de%20poles/public/assets/images/products/<?= htmlspecialchars($product->getPhoto()); ?>" id="main-image" alt="t-shirt">  
     </div>
@@ -230,16 +220,11 @@
             <option value="x-large">X-Large</option>
         </select>
 
-        <input type="number" value="1">
+        <input type="number" value="1" min="1" max="100">
         <button class="normal" data-product-id="<?= $product->getId() ?>" data-url = "<?= addLink('basket','addToBasket') ?>">Add to cart</button>
         <h4>Product details</h4>
         <span><?= htmlspecialchars($product->getDescription()); ?></span>
     </div>
 </section>
-
-
-
-
-<!-- <i class="fa-regular fa-circle-xmark"></i> -->
 
 

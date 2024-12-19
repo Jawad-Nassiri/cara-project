@@ -6,6 +6,7 @@ class Commande extends BaseEntity {
 
     private $montant;
     private $size;
+    private $quantity;
     private $date_enregistrement;
     private $id_membre;
     private $product_id;
@@ -24,6 +25,14 @@ class Commande extends BaseEntity {
 
     public function setSize( $size) {
         $this->size = $size;
+    }
+
+    public function getQuantity() {
+        return $this->quantity;
+    }
+
+    public function setQuantity($quantity){
+        $this->quantity = $quantity;
     }
 
     public function getDateEnregistrement() {

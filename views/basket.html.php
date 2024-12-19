@@ -150,7 +150,7 @@ select, input[type="number"] {
 }
 
 /* alert style  */
-.add-alert {
+.basket-alert {
     position: fixed;
     top: 20%;
     left: 50%;
@@ -167,12 +167,12 @@ select, input[type="number"] {
     z-index: 1000;
 }
 
-.add-alert .alert-message {
+.basket-alert .alert-message {
     flex-grow: 1;
     font-weight: bold;
 }
 
-.add-alert .icon {
+.basket-alert .icon {
     background-color: red;
     color: white;
     border-radius: 50%;
@@ -246,5 +246,6 @@ select, input[type="number"] {
 
 <script>
     let basketCount = <?php echo json_encode($_SESSION['basket_count'] ?? []); ?>;
+
 </script>
 

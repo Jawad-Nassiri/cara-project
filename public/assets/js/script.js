@@ -336,7 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
                     const messageHTML = data.productExists 
                         ? `
-                            <div class="add-alert">
+                            <div class="add-alert-message">
                                 <div class="alert-message">Product Is Already In Basket</div>
                                 <div class="icon"><i class="fa-solid fa-xmark"></i></div>
                             </div>
@@ -351,7 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.querySelector('section#prodetails').insertAdjacentHTML('afterbegin', messageHTML);
         
                     const confirmationElement = document.querySelector('.add-confirmation');
-                    const alertElement = document.querySelector('.add-alert');
+                    const alertElement = document.querySelector('.add-alert-message');
         
                     setTimeout(() => {
                         if (confirmationElement) confirmationElement.style.display = 'none';
@@ -364,18 +364,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // redirection to the payment page 
+    // redirection to the payment page after retrieving basket data
     if (location.pathname.includes('Basket')) {
+        
         const continueBtn = document.getElementById('continue-btn');
     
         function updateBasketCount() {
-            return fetch('/project%20final%20de%20poles/Basket/getBasketCount', { method: 'GET' })
+            const basketItems = [];
+
+            document.querySelectorAll('#product-tbody tr').forEach(row => {
+                const price = row.querySelector('td.price') ? row.querySelector('td.price').innerText : 0;
+                const size = row.querySelector('select.item-size') ? row.querySelector('select.item-size').value : '';
+                const quantity = row.querySelector('input.item-quantity') ? row.querySelector('input.item-quantity').value : 0;
+                const productId = row.querySelector('select.item-size') ? row.querySelector('select.item-size').getAttribute('data-product-id') : 0;
+
+    
+                basketItems.push({
+                    price: price,
+                    size: size,
+                    quantity: quantity,
+                    productId: productId,
+                });
+            });
+
+            let data = JSON.stringify({ items: basketItems });
+
+
+            return fetch('/project%20final%20de%20poles/Commande/getBasketData', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: data
+            })
                 .then(response => response.json())
                 .then(data => {
                     basketCount = data.basket_count;
                 })
                 .catch(error => console.error('Error fetching basket count:', error));
         }
+
+
     
         continueBtn.addEventListener('click', function() {
             updateBasketCount().then(() => {
@@ -383,21 +412,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     location.href = '/project%20final%20de%20poles/Payment/showPaymentPage';
                 } else {
                     document.body.insertAdjacentHTML('afterbegin', `
-                        <div class="add-alert">
+                        <div class="basket-alert">
                             <div class="alert-message">Your Basket Is Empty</div>
                             <div class="icon"><i class="fa-solid fa-xmark"></i></div>
                         </div>
                     `);
     
-                    setTimeout(() => document.querySelector('.add-alert')?.remove(), 2000);
+                    setTimeout(() => document.querySelector('.basket-alert')?.remove(), 2000);
                 }
             });
         });
     }
     
     
-    
-
 
 
     // payment process
@@ -412,7 +439,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 if (data.success) {
                     document.body.insertAdjacentHTML('afterbegin', `
-                        <div class="add-confirmation">
+                        <div class="confirmation">
                             <div class="confirmation-message">Payment processed successfully!</div>
                             <div class="icon"><i class="fa-solid fa-check"></i></div>
                         </div>
