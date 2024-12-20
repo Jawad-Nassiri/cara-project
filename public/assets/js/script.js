@@ -430,7 +430,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // payment process
     if (location.pathname.includes('showPaymentPage')) {
         document.querySelector('button.payment').addEventListener('click', function (event) {
-            event.preventDefault();
+            // event.preventDefault();
     
             fetch('/project%20final%20de%20poles/Payment/processPayment', {
                 method: 'POST',
@@ -439,7 +439,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 if (data.success) {
                     document.body.insertAdjacentHTML('afterbegin', `
-                        <div class="confirmation">
+                        <div class="confirmation_alert_message">
                             <div class="confirmation-message">Payment processed successfully!</div>
                             <div class="icon"><i class="fa-solid fa-check"></i></div>
                         </div>

@@ -246,6 +246,5 @@ select, input[type="number"] {
 
 <script>
     let basketCount = <?php echo json_encode($_SESSION['basket_count'] ?? []); ?>;
-
 </script>
 

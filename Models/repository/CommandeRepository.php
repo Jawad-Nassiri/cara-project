@@ -7,31 +7,50 @@ use PDOException;
 
 class CommandeRepository extends BaseRepository {
 
-    public function saveCommand(Commande $commande): bool {
-        try {
-            $sql = "INSERT INTO commande (montant, size, quantity, date_enregistrement, id_membre, product_id) 
-                    VALUES (:montant, :size, :quantity, :date_enregistrement, :id_membre, :product_id)";
-            $stmt = $this->connection->prepare($sql);
+    public function saveCommande(Commande $commande) {
+        $montant = $commande->getMontant();
+        $dateEnregistrement = $commande->getDateEnregistrement();
+        $idMembre = $commande->getIdMembre();
     
-            $montant = $commande->getMontant();
-            $size = $commande->getSize();
-            $quantity = $commande->getQuantity();
-            $dateEnregistrement = $commande->getDateEnregistrement();
-            $idMembre = $commande->getIdMembre();
-            $productId = $commande->getProductId();
+        $sql = "INSERT INTO commande (montant, date_enregistrement, id_membre) 
+                VALUES (:montant, :date_enregistrement, :id_membre)";
+        
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindParam(':montant', $montant);
+        $stmt->bindParam(':date_enregistrement', $dateEnregistrement);
+        $stmt->bindParam(':id_membre', $idMembre);
     
-            $stmt->bindParam(':montant', $montant);
-            $stmt->bindParam(':size', $size);
-            $stmt->bindParam(':quantity', $quantity);
-            $stmt->bindParam(':date_enregistrement', $dateEnregistrement);
-            $stmt->bindParam(':id_membre', $idMembre);
-            $stmt->bindParam(':product_id', $productId);
-    
-            return $stmt->execute();
-        } catch (PDOException $e) {
-            echo "Error saving command: " . $e->getMessage();
-            return false;
+        if ($stmt->execute()) {
+            $commande->setId($this->connection->lastInsertId());
+            return true;
         }
+    
+        return false;
     }
     
+    
+
+    public function getCommandeById(int $id): ?Commande {
+        try {
+            $sql = "SELECT * FROM commande WHERE id = :id";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+
+            $result = $stmt->fetch();
+            if ($result) {
+                $commande = new Commande();
+                $commande->setId($result['id']);
+                $commande->setMontant($result['montant']);
+                $commande->setDateEnregistrement($result['date_enregistrement']);
+                $commande->setIdMembre($result['id_membre']);
+
+                return $commande;
+            }
+            return null;
+        } catch (PDOException $e) {
+            echo "Error fetching command: " . $e->getMessage();
+            return null;
+        }
+    }
 }

@@ -1535,12 +1535,12 @@ form {
   padding-top: 70px;
 }
 
-.confirmation {
+.confirmation_alert_message {
     background-color: #f1f1f1;
     border-bottom: 3px solid #088178;
   }
 
-.confirmation, .add-alert {
+.confirmation_alert_message, .add-alert {
   width: 300px;
   height: 90px;
   display: flex;
@@ -1560,17 +1560,17 @@ form {
   border-bottom: 3px solid #d32f2f;
 }
 
-.confirmation .icon, .add-alert .icon {
+.confirmation_alert_message .icon, .add-alert .icon {
   width: 15%;
 }
 
-.confirmation .icon i, .add-alert .icon i {
+.confirmation_alert_message .icon i, .add-alert .icon i {
   color: #fff;
   padding: 10px;
   border-radius: 50%;
 }
 
-.confirmation .icon i {
+.confirmation_alert_message .icon i {
   background: #088178;
 }
 
@@ -1578,7 +1578,7 @@ form {
   background: #d32f2f;
 }
 
-.confirmation .confirmation-message, .add-alert .alert-message {
+.confirmation_alert_message .confirmation-message, .add-alert .alert-message {
   width: 85%;
 }
 
