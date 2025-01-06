@@ -369,7 +369,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const continueBtn = document.getElementById('continue-btn');
     
-        function updateBasketCount() {
+        function getBasketData() {
             const basketItems = [];
 
             document.querySelectorAll('#product-tbody tr').forEach(row => {
@@ -407,7 +407,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
         continueBtn.addEventListener('click', function() {
-            updateBasketCount().then(() => {
+            getBasketData().then(() => {
                 if (basketCount !== 0) {
                     location.href = '/project%20final%20de%20poles/Payment/showPaymentPage';
                 } else {
@@ -428,16 +428,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // payment process
-    if (location.pathname.includes('showPaymentPage')) {
-        document.querySelector('button.payment').addEventListener('click', function (event) {
-            // event.preventDefault();
-    
-            fetch('/project%20final%20de%20poles/Payment/processPayment', {
-                method: 'POST',
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
+if (location.pathname.includes('showPaymentPage')) {
+    document.querySelector('button.payment').addEventListener('click', function (event) {
+        event.preventDefault();
+
+        fetch('/project%20final%20de%20poles/Payment/processPayment', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        .then(response => response.text()) 
+        .then(data => {
+            try {
+                const parsedData = JSON.parse(data);
+
+                if (parsedData.success) {
                     document.body.insertAdjacentHTML('afterbegin', `
                         <div class="confirmation_alert_message">
                             <div class="confirmation-message">Payment processed successfully!</div>
@@ -450,29 +456,32 @@ document.addEventListener('DOMContentLoaded', () => {
                     setTimeout(() => {
                         location.href = '/project%20final%20de%20poles/product/index';
                     }, 2000);
-    
                 } else {
-                    console.error('Payment processing failed:', data.message);
+                    console.error('Payment processing failed:', parsedData.message);
                 }
-            })
-            .catch(error => {
-                console.error('Error processing payment:', error);
-            });
+            } catch (error) {
+                console.error('Error parsing response:', error, data);
+            }
+        })
+        .catch(error => {
+            console.error('Error processing payment:', error);
         });
-    }
-    
-    function updateBasketCount() {
-        fetch('/project%20final%20de%20poles/Basket/getBasketCount', { method: 'GET' })
-            .then(response => response.json())
-            .then(data => {
-                if (data.basket_count !== undefined) {
-                    const basketIcon = document.querySelector('#lg-bag a');
-                    basketIcon.setAttribute('data-count', data.basket_count);
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching basket count:', error);
-            });
-    }
+    });
+}
+
+function updateBasketCount() {
+    fetch('/project%20final%20de%20poles/Basket/getBasketCount', { method: 'GET' })
+        .then(response => response.json())
+        .then(data => {
+            if (data.basket_count !== undefined) {
+                const basketIcon = document.querySelector('#lg-bag a');
+                basketIcon.setAttribute('data-count', data.basket_count);
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching basket count:', error);
+        });
+}
+
     
 });
