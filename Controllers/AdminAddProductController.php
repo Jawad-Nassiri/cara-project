@@ -18,10 +18,10 @@ class AdminAddProductController extends BaseController {
     public function showAddProductForm(){
         $this->checkAdminAccess();
         $products = $this->showAllProducts();
-        $users = (new Sign_InRepository())->getAllUsers();  // Fetch users
+        $users = (new Sign_InRepository())->getAllUsers();
         return $this->render('admin-add-product.html.php', [
             'products' => $products,
-            'users' => $users,  // Pass users to the view
+            'users' => $users,
         ]);
     }
 

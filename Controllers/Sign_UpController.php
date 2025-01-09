@@ -22,39 +22,21 @@ class Sign_UpController extends BaseController
 
         $formHandler = new SignUpHandleRequest();
         $formHandler->handleSignUpRequest($this->sign_up);
+        $errors = [];
+
 
         if ($formHandler->isSubmitted()) {
             if ($formHandler->isValid()) {
-                $this->saveFormData($this->sign_up);
-
-                // $_SESSION['username'] = $this->sign_up->getUsername();
-                
-                
+                $this->saveFormData($this->sign_up);                
                 header('Location: /project%20final%20de%20poles/product/index');
                 exit();
             } else {
                 $errors = $formHandler->getErrorsForm();
-                foreach ($errors as $field => $error) {
-                    echo "$field: $error<br>";
-                }
             }
         }
 
-        return $this->render('sign-up-form.html.php');
+        return $this->render('sign-up-form.html.php', ['errors' => $errors]);
     }
-
-    // private function saveFormData(Sign_Up $sign_up)
-    // {
-    //     $Sign_UpRepo = new Sign_UpRepository();
-
-    //     if ($Sign_UpRepo->saveSign_UpForm($sign_up)) {
-    //         echo 'You have successfully registered!';
-    //     } else {
-    //         echo 'There was an error during the registration process. Please try again.';
-    //     }
-    // }
-
-
 
     private function saveFormData(Sign_Up $sign_up)
 {

@@ -483,5 +483,78 @@ function updateBasketCount() {
         });
 }
 
-    
+//form validation
+if (location.pathname.includes('sign_UpForm')) {
+
+    let usernameInput = document.querySelector('.username-input');
+    let passwordInput = document.querySelector('.password-input');
+    let emailInput = document.querySelector('.email-input');
+
+    let usernameErrorMessage = document.querySelector('.username-error-message');
+    let passwordErrorMessage = document.querySelector('.password-error-message');
+    let emailErrorMessage = document.querySelector('.email-error-message');
+
+    usernameInput.addEventListener('input', () => {
+        if (usernameInput.value.length < 3) {
+            usernameErrorMessage.textContent = 'Username must be at least 3 characters';
+            usernameErrorMessage.style.color = 'red'; 
+        } else {
+            usernameErrorMessage.textContent = 'Username Valid';
+            usernameErrorMessage.style.color = 'green'; 
+        }
+    });
+
+    passwordInput.addEventListener('input', () => {
+        if (passwordInput.value.length < 6) {
+            passwordErrorMessage.textContent = 'Password must be at least 6 characters';
+            passwordErrorMessage.style.color = 'red'; 
+        } else {
+            passwordErrorMessage.textContent = 'Password Valid';
+            passwordErrorMessage.style.color = 'green'; 
+        }
+    });
+
+    emailInput.addEventListener('input', () => {
+        if (!emailInput.value.match(/\S+@\S+\.\S+/)) {
+            emailErrorMessage.textContent = 'Invalid email format';
+            emailErrorMessage.style.color = 'red';
+        } else {
+            emailErrorMessage.textContent = 'Email Valid';
+            emailErrorMessage.style.color = 'green';
+        }
+    });
+
+    // Event listener for form submission
+    document.querySelector('.singUp-form').addEventListener('submit', (event) => {
+        let isValid = true;
+
+        if (usernameInput.value === '' || usernameInput.value.length < 3) {
+            usernameErrorMessage.textContent = 'Username must be at least 3 characters';
+            isValid = false;
+        }
+
+        if (passwordInput.value === '' || passwordInput.value.length < 6) {
+            passwordErrorMessage.textContent = 'Password must be at least 6 characters';
+            isValid = false;
+        }
+
+        if (emailInput.value === '' || !emailInput.value.match(/\S+@\S+\.\S+/)) {
+            emailErrorMessage.textContent = 'Invalid email format';
+            isValid = false;
+        }
+
+        if (!isValid) {
+            event.preventDefault();
+        }
+    });
+}
+
+
+
+
+
+
+
+
+
 });

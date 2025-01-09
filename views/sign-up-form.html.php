@@ -14,21 +14,30 @@
         <div class="signup-right-panel">
             <h2 class="signup-title">Sign Up</h2>
 
-            <form method="post">
+            <form method="post" class="singUp-form">
                 <div class="signup-input-field">
                     <i class="fa-solid fa-user"></i>
-                    <input type="text" placeholder="Username" name="username" autocomplete="off">
+                    <input type="text" class="username-input" placeholder="Username" name="username" autocomplete="off">
                 </div>
+                <?php if (!empty($errors['username'])): ?>
+                    <span style="color: red;" class="username-error-message"><?= htmlspecialchars($errors['username']) ?></span>
+                <?php endif; ?>
 
                 <div class="signup-input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password" name="password" autocomplete="off">
+                    <input type="password" class="password-input" placeholder="Password" name="password" autocomplete="off">
                 </div>
-
+                <?php if (!empty($errors['password'])): ?>
+                    <span style="color: red;" class="password-error-message"><?= htmlspecialchars($errors['password']) ?></span>
+                <?php endif; ?>
+                
                 <div class="signup-input-field">
                     <i class="fa-solid fa-envelope"></i>
-                    <input type="email" placeholder="Email" name="email" autocomplete="off">
+                    <input type="email" class="email-input" placeholder="Email" name="email" autocomplete="off">
                 </div>
+                <?php if (!empty($errors['email'])): ?>
+                    <span style="color: red;" class="email-error-message"><?= htmlspecialchars($errors['email']) ?></span>
+                <?php endif; ?>
 
                 <input type="submit" value="Sign Up" class="signup-btn">
 
@@ -36,7 +45,7 @@
 
                 <div class="signup-social-platforms">
                     <a href="" class="signup-social-icon"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="" class="signup-social-icon"><i class="fa-brands fa-twitter"></i></i></a>
+                    <a href="" class="signup-social-icon"><i class="fa-brands fa-twitter"></i></a>
                     <a href="" class="signup-social-icon"><i class="fa-brands fa-square-instagram"></i></a>
                     <a href="" class="signup-social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
                 </div>
