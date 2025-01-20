@@ -941,7 +941,7 @@ form {
 .signup-container {
     border: 1px solid #ccc;
     width: 60%;
-    height: 500px;
+    height: auto;
     border-radius: 5px;
     padding: 20px 50px;
     margin: 100px auto;
@@ -1013,13 +1013,26 @@ form {
     height: 50px;
     width: 100%;
     background: #fdfdfd;
-    margin: 20px 0;
+    margin: 10px 0;
     border-radius: 50px;
     display: flex;
     align-items: center;
     border: 2px solid #088178;
     overflow: hidden;
     transition: all 0.3s;
+}
+
+.singUp-form > span {
+    margin-top: 5px;
+    color: red;
+}
+
+i.fa-solid.fa-eye-slash {
+    cursor: pointer;
+}
+
+i.fa-solid.fa-eye {
+    cursor: pointer;
 }
 
 .signup-input-field:focus-within {

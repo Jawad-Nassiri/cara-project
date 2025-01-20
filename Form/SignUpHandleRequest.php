@@ -12,7 +12,7 @@ class SignUpHandleRequest extends BaseHandleRequest
 
         if ($this->isSubmitted()) {
             $errors = [];
-            if (empty($_POST['username']) && strlen($_POST['username']) < 3) {
+            if (empty($_POST['username']) || strlen($_POST['username']) < 3) {
                 $errors['username'] = "Username must be at least 3 characters";
             }
 

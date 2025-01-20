@@ -19,24 +19,28 @@
                     <i class="fa-solid fa-user"></i>
                     <input type="text" class="username-input" placeholder="Username" name="username" autocomplete="off">
                 </div>
+                <span class="username-error-message"></span>
                 <?php if (!empty($errors['username'])): ?>
-                    <span style="color: red;" class="username-error-message"><?= htmlspecialchars($errors['username']) ?></span>
+                    <span><?= htmlspecialchars($errors['username']) ?></span>
                 <?php endif; ?>
 
                 <div class="signup-input-field">
                     <i class="fas fa-lock"></i>
                     <input type="password" class="password-input" placeholder="Password" name="password" autocomplete="off">
+                    <i class="fa-solid fa-eye-slash"></i>
                 </div>
+                <span class="password-error-message"></span>
                 <?php if (!empty($errors['password'])): ?>
-                    <span style="color: red;" class="password-error-message"><?= htmlspecialchars($errors['password']) ?></span>
+                    <span><?= htmlspecialchars($errors['password']) ?></span>
                 <?php endif; ?>
                 
                 <div class="signup-input-field">
                     <i class="fa-solid fa-envelope"></i>
                     <input type="email" class="email-input" placeholder="Email" name="email" autocomplete="off">
                 </div>
+                <span class="email-error-message"></span>
                 <?php if (!empty($errors['email'])): ?>
-                    <span style="color: red;" class="email-error-message"><?= htmlspecialchars($errors['email']) ?></span>
+                    <span><?= htmlspecialchars($errors['email']) ?></span>
                 <?php endif; ?>
 
                 <input type="submit" value="Sign Up" class="signup-btn">

@@ -483,7 +483,7 @@ function updateBasketCount() {
         });
 }
 
-//form validation
+//form validation (sign up)
 if (location.pathname.includes('sign_UpForm')) {
 
     let usernameInput = document.querySelector('.username-input');
@@ -547,14 +547,40 @@ if (location.pathname.includes('sign_UpForm')) {
             event.preventDefault();
         }
     });
+    
 }
 
 
+// Function to add show/hide password functionality
+function addShowHidePasswordFeature() {
+    const passwordInput = document.querySelector('.password-input');
+    const showPasswordIcon = document.querySelector('i.fa-solid.fa-eye-slash');
 
+    if (passwordInput && showPasswordIcon) {
+        let isShowed = false;
 
+        showPasswordIcon.addEventListener('click', () => {
+            if (isShowed) {
+                if(passwordInput.value.length > 0) {
+                    showPasswordIcon.className = 'fa-solid fa-eye-slash';
+                    passwordInput.type = 'password';
+                    isShowed = false;
+                }
+            } else {
+                if(passwordInput.value.length > 0) {
+                    showPasswordIcon.className = 'fa-solid fa-eye';
+                    passwordInput.type = 'text';
+                    isShowed = true;
+                }
+            }
+        });
+    }
+}
 
-
-
+// Check if we're on the sign-up or sign-in page and apply the feature
+if (location.pathname.includes('sign_UpForm') || location.pathname.includes('Sign_In')) {
+    addShowHidePasswordFeature();
+}
 
 
 });

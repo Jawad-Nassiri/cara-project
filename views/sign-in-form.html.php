@@ -17,7 +17,8 @@
         
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" name="password" required>
+                        <input type="password" class="password-input" placeholder="Password" name="password" required>
+                        <i class="fa-solid fa-eye-slash"></i>
                     </div>
 
                     <?php if (isset($errors['password'])): ?>
