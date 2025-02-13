@@ -891,6 +891,7 @@ form {
     height: 100%;
     color: #444;
     font-size: 18px;
+    background: #fdfdfd;
 }
 
 .left-section .sign-in-error {

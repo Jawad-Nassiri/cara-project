@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentHref === navHref || (currentHref === "http://localhost/project%20final%20de%20poles" && navHref.endsWith("/product/index"))){
             navItem.classList.add('active');
         }
-});
+    });
 
 
 

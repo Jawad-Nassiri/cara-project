@@ -6,9 +6,9 @@
                 <h2 class="form-title">Sign In</h2>
 
                 <form method="post">
-                    <div class="input-field">
+                    <div class="input-field username">
                         <i class="fa-solid fa-user"></i>
-                        <input type="text" placeholder="Username" name="username" required>
+                        <input type="text" placeholder="Username" name="username" autocomplete="off" required>
                     </div>
 
                     <?php if (isset($errors['username'])): ?>
@@ -17,7 +17,7 @@
         
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" class="password-input" placeholder="Password" name="password" required>
+                        <input type="password" class="password-input" placeholder="Password" name="password" autocomplete="off" required>
                         <i class="fa-solid fa-eye-slash"></i>
                     </div>
 
@@ -41,10 +41,10 @@
             <div class="right-section">
 
                 <h3 class="form-title">New to Brand?</h3>
-                <pre>
+<pre>
 If you're a new member,
 you can sign up using the button below.
-                </pre>
+</pre>
 
                 <a href="http://localhost/project%20final%20de%20poles/Sign_Up/sign_UpForm" class="button signup">Sign Up</a>
 
